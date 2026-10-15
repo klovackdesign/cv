@@ -146,6 +146,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 .field input { min-height: 52px; }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus, .field textarea:focus { border-color: var(--accent); }
+.field input::placeholder, .field textarea::placeholder { color: #8a9b89; opacity: 1; }
 .err { color: #e8a393; font-size: 15px; margin-bottom: 14px; }
 .ok { background: var(--bg); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 18px; padding: 24px; color: #eaf0e8; }
 .overlay { position: fixed; inset: 0; z-index: 110; background: rgba(4,7,5,0.8); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow-y: auto; display: flex; align-items: flex-start; justify-content: center; padding: 48px 16px; }
@@ -215,6 +216,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   .dialog { padding: 32px 22px 28px; }
 }
 
+.field input::placeholder, .field textarea::placeholder { color: #8a9b89; opacity: 1; }
 [hidden] { display: none !important; }
 .page a:focus-visible, .page button:focus-visible, .page input:focus-visible, .page textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
@@ -261,7 +263,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
     <div class="wrap hero-grid">
       <div class="rv">
-        <div class="eyebrow" style="font-size: 12px; text-transform: uppercase; margin-bottom: 24px; display: block; padding: 0" data-t="eyebrow">WEB DESIGNER | IF, Ukraine</div>
+        <div class="eyebrow" style="font-size: 12px; text-transform: uppercase; margin-bottom: 24px; display: block; padding: 0" data-t="eyebrow">WEB DESIGNER | REMOTE | WORLDWIDE</div>
         <h1><span data-t="nameA">Yurii </span><em data-t="nameB">Klovak</em></h1>
         <p class="lead" style="font-size: 16px; color: #eaf0e8" data-t="heroText">Hi there! I am an experienced UI/UX, Email &amp; Ads designer. I have the case when a hobby became a favorite job, more than 12 years ago. Minimalism, pixel perfect, individual approach — this is about me.</p>
         <button type="button" class="btn" data-open-contact data-t="heroBtn">Get in touch</button>
@@ -273,7 +275,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
         <span class="sk s0" data-sk="0">UI/UX</span>
         <span class="sk s1" data-sk="1">Email design</span>
         <span class="sk s2" data-sk="2">Advertising</span>
-        <span class="sk s3" data-sk="3">Branding</span>
+        <span class="sk s3" data-sk="3">HTML/CSS</span>
         <span class="sk s4" data-sk="4">Prototyping</span>
         <span class="sk s5" data-sk="5">Design systems</span>
       </div>
@@ -363,16 +365,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
     <form id="contactForm" novalidate>
       <div class="field">
-        <label for="f-name" data-t="fName">Name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name">
+        <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Name" aria-label="Name" data-ph="fName">
       </div>
       <div class="field">
-        <label for="f-email" data-t="fEmail">Email</label>
-        <input id="f-email" name="email" type="email" autocomplete="email">
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Email" aria-label="Email" data-ph="fEmail">
       </div>
       <div class="field">
-        <label for="f-msg" data-t="fMsg">Message</label>
-        <textarea id="f-msg" name="message"></textarea>
+        <textarea id="f-msg" name="message" placeholder="Message" aria-label="Message" data-ph="fMsg"></textarea>
       </div>
       <div class="hp" aria-hidden="true">
         <label for="f-web">Website</label>
@@ -407,7 +406,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 function getData() {
     const T = {
       en: {
-        eyebrow: 'WEB DESIGNER | IF, Ukraine',
+        eyebrow: 'WEB DESIGNER | REMOTE | WORLDWIDE',
         heroA: 'I design interfaces, emails and ads that ', heroB: 'people actually use.',
         eAbout: '01 — About', ePort: '02 — Portfolio', eTest: '03 — Testimonials', top: 'Back to top',
         heroText: 'Hi there! I am an experienced UI/UX, Email & Ads designer. I have the case when a hobby became a favorite job, more than 12 years ago. Minimalism, pixel perfect, individual approach — this is about me.',
@@ -438,14 +437,14 @@ function getData() {
         empty: 'No work matches this theme yet.',
         openMenu: 'Open menu', closeMenu: 'Close menu',
         nav: [['About', '#about'], ['Portfolio', '#portfolio'], ['Testimonials', '#testimonials'], ['Contact', '#contact']],
-        skills: ['UI/UX', 'Email design', 'Advertising', 'Branding', 'Prototyping', 'Design systems'],
+        skills: ['UI/UX', 'Email design', 'Advertising', 'HTML/CSS', 'Prototyping', 'Design systems'],
         roleTitle: '[Job title] — [Company]',
         rolePeriod: '[Start year] – [End year]',
         roleText: '[Describe your responsibilities and key results in two or three sentences.]',
         tName: '[Client name]', tRole: '[Role, Company]', tText: '[Paste the testimonial text here.]'
       },
       uk: {
-        eyebrow: 'ВЕБ ДИЗАЙНЕР | ІФ, Україна',
+        eyebrow: 'WEB DESIGNER | REMOTE | WORLDWIDE',
         heroA: 'Проєктую інтерфейси, листи та рекламу, ', heroB: 'якими справді користуються.',
         eAbout: '01 — Про мене', ePort: '02 — Портфоліо', eTest: '03 — Відгуки', top: 'Нагору',
         heroText: 'Привіт! Я досвідчений UI/UX, Email & Ads дизайнер. Моя історія — це приклад того, як хобі перетворилося на улюблену роботу понад 12 років тому. Мінімалізм, увага до деталей (pixel perfect) та індивідуальний підхід — це про мене.',
@@ -476,7 +475,7 @@ function getData() {
         empty: 'Для цієї теми поки немає робіт.',
         openMenu: 'Відкрити меню', closeMenu: 'Закрити меню',
         nav: [['Про мене', '#about'], ['Портфоліо', '#portfolio'], ['Відгуки', '#testimonials'], ['Контакти', '#contact']],
-        skills: ['UI/UX', 'Email-дизайн', 'Реклама', 'Брендинг', 'Прототипування', 'Дизайн-системи'],
+        skills: ['UI/UX', 'Email-дизайн', 'Реклама', 'HTML/CSS', 'Прототипування', 'Дизайн-системи'],
         roleTitle: '[Посада] — [Компанія]',
         rolePeriod: '[Рік початку] – [Рік завершення]',
         roleText: '[Опишіть свої обов’язки та ключові результати у двох-трьох реченнях.]',
@@ -507,7 +506,7 @@ function getData() {
       {
         id: 'email',
         title: { en: 'Email Design', uk: 'Email-дизайн' },
-        desc: { en: 'Campaigns, newsletters\nand flow emails.', uk: 'Кампанії, розсилки та транзакційні листи.' },
+        desc: { en: 'Campaigns, newsletters, flows.', uk: 'Кампанії, розсилки та flow.' },
         types: {
           promo: { en: 'Promotional', uk: 'Промо-листи' },
           trans: { en: 'Transactional', uk: 'Транзакційні' },
@@ -524,7 +523,7 @@ function getData() {
       {
         id: 'ads',
         title: { en: 'Advertising', uk: 'Реклама' },
-        desc: { en: 'Social, banner and print campaigns.', uk: 'Соціальні, банерні та друковані кампанії.' },
+        desc: { en: 'Social media banners.', uk: 'Рекламні банери для соцмереж.' },
         types: {
           social: { en: 'Social ads', uk: 'Реклама в соцмережах' },
           banner: { en: 'Banners', uk: 'Банери' },
@@ -549,7 +548,7 @@ function getData() {
     };
     const ROLES = [
       {
-        period: { en: 'Dec 2022 – Present · 3 yrs 11 mos.', uk: 'Грудень 2022 – дотепер · 3 р. 11 міс.' },
+        period: { en: 'Dec 2022 – Present', uk: 'Грудень 2022 – дотепер' },
         title: { en: 'Email & Ad Designer at Sweat Pants Agency', uk: 'Email- та рекламний дизайнер у Sweat Pants Agency' },
         text: {
           en: 'Email design and implementation: campaigns, newsletters, and flows. Ad banner design.',
@@ -567,7 +566,7 @@ function getData() {
         tags: ['figma', 'ps', 'uiux', 'ad', 'ai', 'time']
       },
       {
-        period: { en: 'Dec 2017 – Mar 2022 · 4 yrs 4 mos.', uk: 'Грудень 2017 – березень 2022 · 4 р. 4 міс.' },
+        period: { en: 'Dec 2017 – Mar 2022', uk: 'Грудень 2017 – Березень 2022' },
         title: { en: 'Product Designer at New Media Space Internet Agency', uk: 'Продуктовий дизайнер в інтернет-агенції New Media Space' },
         text: {
           en: 'Product: website, online directory. Updating and maintaining website and mobile app designs. Collaborating with web developers and the marketing department. Creating various types of graphics for web and marketing purposes.',
@@ -699,6 +698,7 @@ function getData() {
     document.title = TITLES[l];
     $$('[data-t]').forEach(function (el) { var v = t[el.getAttribute('data-t')]; if (v !== undefined) el.textContent = v; });
     $$('[data-aria]').forEach(function (el) { el.setAttribute('aria-label', t[el.getAttribute('data-aria')]); });
+    $$('[data-ph]').forEach(function (el) { var v = t[el.getAttribute('data-ph')]; el.placeholder = v; el.setAttribute('aria-label', v); });
     $$('[data-nav]').forEach(function (el) { el.textContent = t.nav[+el.getAttribute('data-nav')][0]; });
     $$('[data-sk]').forEach(function (el) { el.textContent = t.skills[+el.getAttribute('data-sk')]; });
     $$('[data-lang]').forEach(function (b) {
