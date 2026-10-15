@@ -96,11 +96,18 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
 .about-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: start; }
 .about-grid h2 { font-size: clamp(26px, 3.6vw, 40px); margin-bottom: 28px; }
-.about-grid .overview { position: sticky; top: 104px; }
+.about-grid .overview { position: sticky; top: min(104px, calc(100vh - 820px)); }
 .side-block { margin-top: 32px; }
 .side-h { font-size: 15px !important; margin-bottom: 14px !important; }
 .langs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .langs li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.tools { margin-top: 16px; }
+.tools b { display: block; color: #eaf0e8; font-weight: 500; margin-bottom: 2px; }
+.tools + p { margin-top: 16px; }
+.contacts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.contacts a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--text); }
+.contacts a svg { color: var(--accent); flex: none; }
+.contacts a:hover span { color: var(--accent); }
 .langs .ln { color: #eaf0e8; font-weight: 500; }
 .langs .ln::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: middle; }
 .about-grid .overview p + p { margin-top: 16px; }
@@ -285,17 +292,21 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   <section class="section s-about" id="about">
     <div class="wrap about-grid">
       <div class="overview rv">
-        <div class="sec-eyebrow" data-t="eAbout">01 — About</div>
         <h2 data-t="aboutTitle">About me</h2>
-        <p data-t="aboutP1">[Write a short overview about yourself: who you are, what you design and what you care about.]</p>
-        <p data-t="aboutP2">[Add one or two sentences about how you work with clients and teams.]</p>
-        <div class="side-block">
-          <h3 class="side-h" data-t="skillsTitle">Skills</h3>
-          <div class="tags" id="skillTags" style="margin-top: 0; padding-top: 0"></div>
-        </div>
+        <p data-t="aboutP1">My name is Yurii, and I am from Ivano-Frankivsk, Ukraine. I have been working in web design for over 12 years. My main areas of expertise are UI/UX design, email design, and ad creatives.</p>
+        <div class="tools"><b data-t="toolsLabel">Key tools:</b><span data-t="toolsText">Figma, Adobe Photoshop, AI assistants.</span></div>
+        <p data-t="aboutP2">Do you have an interesting project, a job opening, or a business proposal for me? Let’s discuss it!</p>
         <div class="side-block">
           <h3 class="side-h" data-t="langTitle">Languages</h3>
           <ul class="langs" id="langs"></ul>
+        </div>
+        <div class="side-block">
+          <h3 class="side-h" data-t="contactTitle">Contact</h3>
+          <ul class="contacts">
+            <li><a href="https://t.me/klovackdesign" target="_blank" rel="noopener noreferrer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 3.5L2.5 10.8l6.2 2.2 2.3 6.5 3.2-4.2 4.6 3.4z"></path><path d="M8.7 13l12.8-9.5"></path></svg><span data-t="cTelegram">Message on Telegram</span></a></li>
+            <li><a href="https://www.linkedin.com/in/klovackdesign/" target="_blank" rel="noopener noreferrer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M8 11v6"></path><circle cx="8" cy="7.8" r="0.8"></circle><path d="M12 17v-6"></path><path d="M12 13.5c0-1.6 1.2-2.5 2.6-2.5 1.5 0 2.4.9 2.4 2.7V17"></path></svg><span data-t="cLinkedin">Connect on LinkedIn</span></a></li>
+            <li><a href="mailto:yurii.klovak@gmail.com"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="M3.5 7.5l8.5 6 8.5-6"></path></svg><span>yurii.klovak@gmail.com</span></a></li>
+          </ul>
         </div>
       </div>
       <div>
@@ -308,7 +319,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   <section class="section s-port" id="portfolio">
     <div class="wrap">
       <div class="sec-head rv">
-        <div class="sec-eyebrow" data-t="ePort">02 — Portfolio</div>
         <h2 data-t="portTitle">Portfolio</h2>
         <p data-t="portSub">Pick a category to see selected work.</p>
       </div>
@@ -319,7 +329,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   <section class="section s-test" id="testimonials">
     <div class="wrap">
       <div class="sec-head rv">
-        <div class="sec-eyebrow" data-t="eTest">03 — Testimonials</div>
         <h2 data-t="testTitle">Testimonials</h2>
       </div>
       <div class="tgrid" id="tests"></div>
@@ -413,10 +422,12 @@ function getData() {
         heroBtn: 'Get in touch', nameA: 'Yurii\u00a0', nameB: 'Klovak',
         photoPh: '[Your photo]', photoAlt: 'Portrait',
         aboutTitle: 'About me',
-        aboutP1: '[Write a short overview about yourself: who you are, what you design and what you care about.]',
-        aboutP2: '[Add one or two sentences about how you work with clients and teams.]',
+        aboutP1: 'My name is Yurii, and I am from Ivano-Frankivsk, Ukraine. I have been working in web design for over 12 years. My main areas of expertise are UI/UX design, email design, and ad creatives.',
+        toolsLabel: 'Key tools:', toolsText: 'Figma, Adobe Photoshop, AI assistants.',
+        aboutP2: 'Do you have an interesting project, a job opening, or a business proposal for me? Let’s discuss it!',
         aboutSub: 'Work experience',
         skillsTitle: 'Skills', langTitle: 'Languages',
+        contactTitle: 'Contact', cTelegram: 'Message on Telegram', cLinkedin: 'Connect on LinkedIn',
         portTitle: 'Portfolio',
         portSub: 'Pick a category to see selected work.',
         viewWork: 'View work',
@@ -430,7 +441,9 @@ function getData() {
         fErr: 'Please fill in all fields and enter a valid email.',
         capTitle: 'Anti-spam check:', capErr: 'Incorrect answer — please try the new question.',
         mailBtn: 'Send via my email app', mailNote: 'Or write directly to',
-        sentMsg: 'Thank you! Your message is ready — tap the button to send it from your email app.',
+        sentOk: 'Thank you! Your message has been sent.',
+        sendingLbl: 'Sending…',
+        sendFail: 'We couldn’t send your message automatically. Please use the button below to send it from your email app.',
         socLabel: 'Contact me here',
         copy: '© 2026 klovackdesign. All rights reserved.',
         close: 'Close', theme: 'Theme', all: 'All', preview: '[Preview image]',
@@ -451,10 +464,12 @@ function getData() {
         heroBtn: 'Зв’язатися', nameA: 'Юрій\u00a0', nameB: 'Кловак',
         photoPh: '[Ваше фото]', photoAlt: 'Портрет',
         aboutTitle: 'Про мене',
-        aboutP1: '[Коротко розкажіть про себе: хто ви, що проєктуєте і що для вас важливо.]',
-        aboutP2: '[Додайте одне-два речення про те, як ви працюєте з клієнтами та командами.]',
+        aboutP1: 'Мене звати Юрій, я з міста Івано-Франківськ, Україна. Працюю у сфері веб-дизайну вже понад 12 років. Основні напрямки роботи: UI/UX дизайн, Email дизайн і рекламні креативи.',
+        toolsLabel: 'Основні інструменти:', toolsText: 'Figma, Adobe Photoshop, ШІ асистенти.',
+        aboutP2: 'Маєте цікавий проект, вакансію чи ділову пропозицію для мене? Давайте обговоримо це!',
         aboutSub: 'Досвід роботи',
         skillsTitle: 'Навички', langTitle: 'Мови',
+        contactTitle: 'Контакти', cTelegram: 'Написати в Telegram', cLinkedin: 'Зв’язатися в LinkedIn',
         portTitle: 'Портфоліо',
         portSub: 'Оберіть категорію, щоб переглянути роботи.',
         viewWork: 'Дивитись роботи',
@@ -468,7 +483,9 @@ function getData() {
         fErr: 'Заповніть усі поля та вкажіть коректну пошту.',
         capTitle: 'Перевірка від спаму:', capErr: 'Неправильна відповідь — спробуйте нове запитання.',
         mailBtn: 'Надіслати через поштовий застосунок', mailNote: 'Або напишіть напряму на',
-        sentMsg: 'Дякую! Повідомлення готове — натисніть кнопку, щоб надіслати його зі свого поштового застосунку.',
+        sentOk: 'Дякую! Ваше повідомлення надіслано.',
+        sendingLbl: 'Надсилання…',
+        sendFail: 'Не вдалося надіслати повідомлення автоматично. Скористайтеся кнопкою нижче, щоб надіслати його зі свого поштового застосунку.',
         socLabel: 'Зв’язатися зі мною тут',
         copy: '© 2026 klovackdesign. Усі права захищено.',
         close: 'Закрити', theme: 'Тема', all: 'Усі', preview: '[Зображення проєкту]',
@@ -577,7 +594,7 @@ function getData() {
     ];
     const SKILLS = ['figma', 'ps', 'uiux', 'email', 'ad', 'ai', 'html', 'klaviyo', 'mailchimp', 'sendlane', 'attentive', 'teamwork', 'time'];
     const LANGS = [
-      { name: { en: 'English', uk: 'Англійська' }, level: { en: 'Pre-Intermediate (sufficient for work)', uk: 'Pre-Intermediate (достатньо для роботи)' } },
+      { name: { en: 'English', uk: 'Англійська' }, level: { en: 'Pre-Intermediate', uk: 'Pre-Intermediate' } },
       { name: { en: 'Ukrainian', uk: 'Українська' }, level: { en: 'Native', uk: 'Рідна' } }
     ];
     return { T, CATS, TAGS, ROLES, SKILLS, LANGS, PHOTO };
@@ -633,7 +650,6 @@ function getData() {
   }
 
   function renderLists() {
-    $('#skillTags').innerHTML = SKILLS.map(function (id) { return '<span class="tag">' + esc(TAGS[id][lang]) + '</span>'; }).join('');
     $('#langs').innerHTML = LANGS.map(function (l) {
       return '<li><span class="ln">' + esc(l.name[lang]) + '</span><span class="lv">' + esc(l.level[lang]) + '</span></li>';
     }).join('');
@@ -688,6 +704,16 @@ function getData() {
     if (focusSel) { var f = $(focusSel, modalEl); if (f) f.focus(); }
   }
 
+  // ---- Sticky "About" column: if it is taller than the screen, let its bottom scroll into view ----
+  function syncSticky() {
+    var o = $('.overview');
+    if (!o) return;
+    o.style.top = Math.min(104, window.innerHeight - o.offsetHeight - 24) + 'px';
+  }
+  window.addEventListener('resize', syncSticky);
+  window.addEventListener('load', syncSticky);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncSticky);
+
   // ---- Language -------------------------------------------------------------
   function updateBurgerLabel() {
     var open = burger.classList.contains('open');
@@ -713,6 +739,7 @@ function getData() {
     renderLists();
     if (state.modal) renderModal();
     if (!contactEl.hidden) refreshContactTexts();
+    syncSticky();
     if (persist) { try { localStorage.setItem('lang', l); } catch (e) {} }
   }
 
