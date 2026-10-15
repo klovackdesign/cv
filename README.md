@@ -19,10 +19,15 @@ Plain HTML/CSS/JS. No build step, no framework. Fonts load from Google Fonts.
 4. Wait a few minutes to a few hours. HTTPS is enabled automatically.
 
 ## Add your real portfolio work
-Open `index.html`, find `imgs:` in the three categories (ui / email / ads) and list your files in the same order
-as the `works` list above each one, e.g. `imgs: ['images/ui-1.jpg', 'images/ui-2.jpg', ...]`.
-The same images fill the category previews, the popups and the collage behind "Discuss Project".
-Use JPG/WebP, about 1200px wide.
+Open `index.html` and find the `WORKS` list (search for "WORKS"). Each line is one project card:
+
+    { cat: 'ui', img: 'images/shop-app.jpg', title: { en: 'Shop app redesign', uk: 'Редизайн застосунку магазину' } },
+
+- `cat` is `ui`, `email` or `creatives` (it sets the filter tag and the small tag on the card).
+- `img` is the full-size image in the `images/` folder. The card shows it cropped from the top; the popup shows it
+  at 100% and lets visitors zoom (− / + buttons, Ctrl/Cmd + mouse wheel or trackpad pinch, keys + − 0) and drag to pan.
+- Add or delete lines to change how many projects there are. The same images feed the collage behind "Discuss Project".
+- Use JPG/WebP/PNG. Tall email designs work well: they open at full width and scroll.
 
 ## Contact form (delivers straight to your inbox)
 The form sends each message to yurii.klovak@gmail.com through FormSubmit (formsubmit.co), a free relay, and

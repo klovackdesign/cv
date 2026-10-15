@@ -114,17 +114,15 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 .exp-label { font-family: 'Unbounded', sans-serif; font-size: 14px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
 .exp-list { display: flex; flex-direction: column; gap: 20px; }
 
-.cat { text-align: left; cursor: pointer; color: inherit; font-size: 17px; line-height: 1.6; transition: transform .25s, border-color .25s; padding: 14px 14px 28px; gap: 12px; }
-.cat:hover { transform: translateY(-4px); border-color: var(--accent); }
-.cat-body { display: flex; flex-direction: column; gap: 10px; padding: 8px 14px 0; flex: 1; }
-.mosaic { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-rows: repeat(2, 1fr); gap: 8px; height: 190px; }
-.mosaic .tile:first-child { grid-row: 1 / span 2; }
-.tile { position: relative; overflow: hidden; border-radius: 12px; background: #262c27; }
-.tile:nth-child(2) { background: color-mix(in srgb, var(--accent) 16%, var(--surface)); }
-.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.cat-num { font-family: 'Unbounded', sans-serif; font-size: 14px; color: var(--accent); }
-.cat-cta { margin-top: auto; padding-top: 6px; color: var(--accent); font-weight: 600; font-size: 15px; }
-
+.pfilters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.pcard { text-align: left; padding: 0; cursor: pointer; color: inherit; font: inherit; line-height: 1.5; background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, border-color .25s; }
+.pcard:hover { transform: translateY(-4px); border-color: var(--accent); }
+.pthumb { position: relative; aspect-ratio: 4 / 3; background: #232924; display: grid; place-items: center; font-size: 14px; color: #6f7f6e; overflow: hidden; }
+.pthumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .5s ease; }
+.pcard:hover .pthumb img { transform: scale(1.04); }
+.pbody { padding: 18px 20px 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.pbody h3 { font-size: 16px; }
 .tgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .tcard { padding: 28px 24px; gap: 20px; }
 .tcard .quote { font-size: 16px; line-height: 1.6; color: #dfe8dd; }
@@ -169,28 +167,24 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 .soc a { width: 52px; height: 52px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); display: grid; place-items: center; transition: background .2s, color .2s; }
 .soc a:hover { background: var(--accent); color: var(--bg); }
 
-.modal { position: fixed; inset: 0; z-index: 100; background: rgba(10,14,12,0.97); overflow-y: auto; }
-.modal-in { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
-.modal-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
-.modal-top h2 { font-size: clamp(24px, 3.4vw, 38px); }
 .close { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background: var(--surface); color: #eaf0e8; cursor: pointer; display: grid; place-items: center; flex: none; padding: 0; }
 .close:hover { border-color: var(--accent); color: var(--accent); }
-.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-.tab { font-family: 'Unbounded', sans-serif; font-size: 13px; min-height: 48px; padding: 0 24px; }
-.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 40px; }
-.filters .lbl { font-size: 14px; margin-right: 6px; }
 .chip { min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: transparent; color: var(--text); font-size: 15px; font-weight: 500; cursor: pointer; }
 .chip:hover { border-color: var(--accent); color: var(--accent); }
 .chip.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-.group { margin-bottom: 56px; }
-.group h3 { font-size: 20px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.work { background: var(--surface); border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
-.thumb { position: relative; aspect-ratio: 4 / 3; background: #232924; display: grid; place-items: center; font-size: 14px; color: #6f7f6e; overflow: hidden; }
-.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.work-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 10px; }
-.work-body h4 { font-size: 16px; }
-
+.lb { position: fixed; inset: 0; z-index: 120; background: #050806; display: flex; flex-direction: column; }
+.lb-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); flex: none; }
+.lb-title { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
+.lb-title h2 { font-size: clamp(16px, 2.2vw, 22px); }
+.lb-top .close { width: 48px; height: 48px; background: var(--bg); }
+.lb-stage { flex: 1; overflow: auto; display: flex; padding: 24px; overscroll-behavior: contain; }
+.lb-stage > * { margin: auto; flex: none; }
+.lb-img { display: block; max-width: none; border-radius: 6px; user-select: none; -webkit-user-drag: none; }
+.lb-ph { display: grid; place-items: center; background: var(--surface); border: 1px solid rgba(255,255,255,0.08); color: #6f7f6e; border-radius: 6px; font-size: 16px; }
+.lb-ctl { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); display: flex; align-items: center; gap: 2px; padding: 6px; background: rgba(27,31,28,0.94); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; }
+.lb-ctl button { min-width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: #eaf0e8; font-size: 22px; line-height: 1; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.lb-ctl button:hover { color: var(--accent); background: rgba(255,255,255,0.06); }
+.lb-ctl .pct { font-size: 14px; font-weight: 600; min-width: 60px; padding: 0 10px; }
 .rv { transition: transform .25s, border-color .25s; }
 @media (max-width: 760px) {
   .header-in { gap: 0 10px; padding-top: 8px; padding-bottom: 8px; }
@@ -207,7 +201,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   .tgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
-  .grid3, .works { grid-template-columns: minmax(0, 1fr); }
+  .grid3 { grid-template-columns: minmax(0, 1fr); }
+  .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hero-grid, .about-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .about-grid .overview { position: static; }
   .hero { padding: 56px 0 64px; }
@@ -216,13 +211,17 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   .collage { width: 220%; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .tgrid { grid-template-columns: minmax(0, 1fr); }
+  .tgrid, .pgrid { grid-template-columns: minmax(0, 1fr); }
+  .lb-top { padding: 12px 16px; }
+  .lb-stage { padding: 16px; }
   .hero-visual { padding: 24px 12px; }
   .s2 { left: -4px; } .s3 { right: -4px; }
   .sk { font-size: 12px; padding: 5px 12px; }
   .dialog { padding: 32px 22px 28px; }
 }
 
+.lb-stage.pan { cursor: grab; }
+.lb-stage.pan.drag { cursor: grabbing; }
 .field input::placeholder, .field textarea::placeholder { color: #8a9b89; opacity: 1; }
 [hidden] { display: none !important; }
 .page a:focus-visible, .page button:focus-visible, .page input:focus-visible, .page textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -322,7 +321,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
         <h2 data-t="portTitle">Portfolio</h2>
         <p data-t="portSub">Pick a category to see selected work.</p>
       </div>
-      <div class="grid3" id="cats"></div>
+      <div class="pfilters" id="pfilters" role="group" data-aria="portTitle" aria-label="Portfolio"></div>
+      <div class="pgrid" id="pgrid"></div>
     </div>
   </section>
 
@@ -406,8 +406,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   </div>
 </div>
 
-<!-- Portfolio popup (filled by script) -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden></div>
+<!-- Project image popup (filled by script) -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden></div>
 
 </div>
 
@@ -430,7 +430,6 @@ function getData() {
         contactTitle: 'Contact', cTelegram: 'Message on Telegram', cLinkedin: 'Connect on LinkedIn',
         portTitle: 'Portfolio',
         portSub: 'Pick a category to see selected work.',
-        viewWork: 'View work',
         testTitle: 'Testimonials',
         ctaTitle: 'Let’s discuss your project',
         ctaText: 'Tell me what you have in mind and we’ll find the right way to bring it to life.',
@@ -446,8 +445,8 @@ function getData() {
         sendFail: 'We couldn’t send your message automatically. Please use the button below to send it from your email app.',
         socLabel: 'Contact me here',
         copy: '© 2026 klovackdesign. All rights reserved.',
-        close: 'Close', theme: 'Theme', all: 'All', preview: '[Preview image]',
-        empty: 'No work matches this theme yet.',
+        close: 'Close', all: 'All', preview: '[Project image]',
+        zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Reset zoom to 100%', zoomFit: 'Fit image to window width', fit: 'Fit',
         openMenu: 'Open menu', closeMenu: 'Close menu',
         nav: [['About', '#about'], ['Portfolio', '#portfolio'], ['Testimonials', '#testimonials'], ['Contact', '#contact']],
         skills: ['UI/UX', 'Email design', 'Advertising', 'HTML/CSS', 'Prototyping', 'Design systems'],
@@ -472,7 +471,6 @@ function getData() {
         contactTitle: 'Контакти', cTelegram: 'Написати в Telegram', cLinkedin: 'Зв’язатися в LinkedIn',
         portTitle: 'Портфоліо',
         portSub: 'Оберіть категорію, щоб переглянути роботи.',
-        viewWork: 'Дивитись роботи',
         testTitle: 'Відгуки',
         ctaTitle: 'Обговоримо ваш проєкт',
         ctaText: 'Розкажіть, що ви задумали, — і ми разом знайдемо найкращий спосіб втілити це.',
@@ -488,8 +486,8 @@ function getData() {
         sendFail: 'Не вдалося надіслати повідомлення автоматично. Скористайтеся кнопкою нижче, щоб надіслати його зі свого поштового застосунку.',
         socLabel: 'Зв’язатися зі мною тут',
         copy: '© 2026 klovackdesign. Усі права захищено.',
-        close: 'Закрити', theme: 'Тема', all: 'Усі', preview: '[Зображення проєкту]',
-        empty: 'Для цієї теми поки немає робіт.',
+        close: 'Закрити', all: 'Усі', preview: '[Зображення проєкту]',
+        zoomIn: 'Збільшити', zoomOut: 'Зменшити', zoomReset: 'Скинути масштаб до 100%', zoomFit: 'Вмістити зображення за шириною вікна', fit: 'За шир.',
         openMenu: 'Відкрити меню', closeMenu: 'Закрити меню',
         nav: [['Про мене', '#about'], ['Портфоліо', '#portfolio'], ['Відгуки', '#testimonials'], ['Контакти', '#contact']],
         skills: ['UI/UX', 'Email-дизайн', 'Реклама', 'HTML/CSS', 'Прототипування', 'Дизайн-системи'],
@@ -503,57 +501,21 @@ function getData() {
     // e.g. imgs: ['images/ui-1.jpg', 'images/ui-2.jpg', ...]. Order matches the works list above.
     const PHOTO = 'portrait.jpg';
     const CATS = [
-      {
-        id: 'ui',
-        title: { en: 'UI/UX Design', uk: 'UI/UX дизайн' },
-        desc: { en: 'Websites, apps and dashboards.', uk: 'Сайти, застосунки та дашборди.' },
-        types: {
-          web: { en: 'Web', uk: 'Веб' },
-          mobile: { en: 'Mobile apps', uk: 'Мобільні застосунки' },
-          dash: { en: 'Dashboards', uk: 'Дашборди' }
-        },
-        themes: {
-          fintech: { en: 'Fintech', uk: 'Фінтех' },
-          ecom: { en: 'E-commerce', uk: 'E-commerce' },
-          saas: { en: 'SaaS', uk: 'SaaS' }
-        },
-        works: [['web', 'fintech'], ['web', 'ecom'], ['mobile', 'saas'], ['mobile', 'fintech'], ['dash', 'saas'], ['dash', 'ecom']],
-        imgs: ['', '', '', '', '', '']
-      },
-      {
-        id: 'email',
-        title: { en: 'Email Design', uk: 'Email-дизайн' },
-        desc: { en: 'Campaigns, newsletters, flows.', uk: 'Кампанії, розсилки та flow.' },
-        types: {
-          promo: { en: 'Promotional', uk: 'Промо-листи' },
-          trans: { en: 'Transactional', uk: 'Транзакційні' },
-          news: { en: 'Newsletters', uk: 'Розсилки' }
-        },
-        themes: {
-          retail: { en: 'Retail', uk: 'Ритейл' },
-          events: { en: 'Events', uk: 'Події' },
-          product: { en: 'Product', uk: 'Продукт' }
-        },
-        works: [['promo', 'retail'], ['promo', 'events'], ['trans', 'product'], ['trans', 'retail'], ['news', 'events'], ['news', 'product']],
-        imgs: ['', '', '', '', '', '']
-      },
-      {
-        id: 'ads',
-        title: { en: 'Advertising', uk: 'Реклама' },
-        desc: { en: 'Social media banners.', uk: 'Рекламні банери для соцмереж.' },
-        types: {
-          social: { en: 'Social ads', uk: 'Реклама в соцмережах' },
-          banner: { en: 'Banners', uk: 'Банери' },
-          print: { en: 'Print & outdoor', uk: 'Друк і outdoor' }
-        },
-        themes: {
-          brand: { en: 'Brand', uk: 'Бренд' },
-          seasonal: { en: 'Seasonal', uk: 'Сезонні' },
-          launch: { en: 'Product launch', uk: 'Запуск продукту' }
-        },
-        works: [['social', 'brand'], ['social', 'seasonal'], ['banner', 'launch'], ['banner', 'brand'], ['print', 'seasonal'], ['print', 'launch']],
-        imgs: ['', '', '', '', '', '']
-      }
+      { id: 'ui', title: { en: 'UI/UX Design', uk: 'UI/UX дизайн' } },
+      { id: 'email', title: { en: 'Email Design', uk: 'Email-дизайн' } },
+      { id: 'creatives', title: { en: 'Creatives', uk: 'Креативи' } }
+    ];
+    // One entry per project card. cat = ui | email | creatives; img = full-size image shown in the popup.
+    const WORKS = [
+      { cat: 'ui', img: '', title: { en: '[Project name 1]', uk: '[Назва проєкту 1]' } },
+      { cat: 'email', img: '', title: { en: '[Project name 2]', uk: '[Назва проєкту 2]' } },
+      { cat: 'creatives', img: '', title: { en: '[Project name 3]', uk: '[Назва проєкту 3]' } },
+      { cat: 'ui', img: '', title: { en: '[Project name 4]', uk: '[Назва проєкту 4]' } },
+      { cat: 'email', img: '', title: { en: '[Project name 5]', uk: '[Назва проєкту 5]' } },
+      { cat: 'creatives', img: '', title: { en: '[Project name 6]', uk: '[Назва проєкту 6]' } },
+      { cat: 'ui', img: '', title: { en: '[Project name 7]', uk: '[Назва проєкту 7]' } },
+      { cat: 'email', img: '', title: { en: '[Project name 8]', uk: '[Назва проєкту 8]' } },
+      { cat: 'creatives', img: '', title: { en: '[Project name 9]', uk: '[Назва проєкту 9]' } }
     ];
     const tg = (en, uk) => ({ en, uk: uk || en });
     const TAGS = {
@@ -597,13 +559,13 @@ function getData() {
       { name: { en: 'English', uk: 'Англійська' }, level: { en: 'Pre-Intermediate', uk: 'Pre-Intermediate' } },
       { name: { en: 'Ukrainian', uk: 'Українська' }, level: { en: 'Native', uk: 'Рідна' } }
     ];
-    return { T, CATS, TAGS, ROLES, SKILLS, LANGS, PHOTO };
+    return { T, CATS, WORKS, TAGS, ROLES, SKILLS, LANGS, PHOTO };
 }
 
 (function () {
   'use strict';
   var D = getData();
-  var T = D.T, CATS = D.CATS, TAGS = D.TAGS, ROLES = D.ROLES, SKILLS = D.SKILLS, LANGS = D.LANGS;
+  var T = D.T, CATS = D.CATS, WORKS = D.WORKS, TAGS = D.TAGS, ROLES = D.ROLES, SKILLS = D.SKILLS, LANGS = D.LANGS;
 
   // ---- Settings -------------------------------------------------------------
   var EMAIL = 'yurii.klovak@gmail.com';
@@ -631,17 +593,17 @@ function getData() {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   };
-  var CLOSE_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
+  var CLOSE_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
 
   var lang = 'en';
   try { var saved = localStorage.getItem('lang'); if (saved === 'uk' || saved === 'en') lang = saved; } catch (e) {}
   var t = T[lang];
-  var state = { modal: null, theme: 'all' };
+  var state = { lb: null, cat: 'all', zoom: 1 };
   var cap = { a: 3, b: 4 };
   var lastFocus = null;
 
   var navEl = $('#site-nav'), burger = $('#burger');
-  var modalEl = $('#modal'), contactEl = $('#contactOverlay');
+  var lbEl = $('#lb'), contactEl = $('#contactOverlay');
   var form = $('#contactForm');
 
   // ---- Rendering ------------------------------------------------------------
@@ -657,51 +619,92 @@ function getData() {
       return '<article class="card rv"><div class="period">' + esc(r.period[lang]) + '</div><h3>' + esc(r.title[lang]) + '</h3><p>' + esc(r.text[lang]) +
         '</p><div class="tags">' + r.tags.map(function (id) { return '<span class="tag">' + esc(TAGS[id][lang]) + '</span>'; }).join('') + '</div></article>';
     }).join('');
-    $('#cats').innerHTML = CATS.map(function (c, i) {
-      return '<button type="button" class="card cat rv" data-open-cat="' + c.id + '"><div class="mosaic">' +
-        [0, 1, 2].map(function (k) { return tile(c.imgs[k], 'tile'); }).join('') +
-        '</div><div class="cat-body"><span class="cat-num">0' + (i + 1) + '</span><h3>' + esc(c.title[lang]) + '</h3><p>' + esc(c.desc[lang]) +
-        '</p><span class="cat-cta">' + esc(t.viewWork) + ' →</span></div></button>';
-    }).join('');
+    renderGrid();
     $('#tests').innerHTML = [0, 1, 2, 3].map(function () {
       return '<article class="card tcard rv"><svg class="qicon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2.5L6 19h3l2-4V9a2 2 0 0 0-2-2zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2.5L16 19h3l2-4V9a2 2 0 0 0-2-2z"></path></svg>' +
         '<p class="quote">' + esc(t.tText) + '</p><div class="who"><h4>' + esc(t.tName) + '</h4><span>' + esc(t.tRole) + '</span></div></article>';
     }).join('');
-    var flat = [];
-    CATS.forEach(function (c) { c.imgs.forEach(function (u) { flat.push(u); }); });
+    var have = WORKS.filter(function (w) { return w.img; }).map(function (w) { return w.img; });
     var col = '';
-    for (var i = 0; i < 15; i++) col += tile(flat[i] || '', 'ct ct' + (i % 3));
+    for (var i = 0; i < 15; i++) col += tile(have.length ? have[i % have.length] : '', 'ct ct' + (i % 3));
     $('#collage').innerHTML = col;
   }
 
-  function renderModal(focusSel) {
-    var cat = CATS.filter(function (c) { return c.id === state.modal; })[0];
-    if (!cat) return;
-    var themeIds = Object.keys(cat.themes);
-    var themes = [{ id: 'all', label: t.all }].concat(themeIds.map(function (id) { return { id: id, label: cat.themes[id][lang] }; }));
-    var groups = Object.keys(cat.types).map(function (typeId) {
-      var items = [];
-      cat.works.forEach(function (w, i) {
-        if (w[0] === typeId && (state.theme === 'all' || w[1] === state.theme)) {
-          var src = cat.imgs[i];
-          items.push('<article class="work"><div class="thumb">' +
-            (src ? '<img src="' + esc(src) + '" alt="' + esc((lang === 'en' ? 'Project ' : 'Проєкт ') + (i + 1)) + '" loading="lazy">' : '<span>' + esc(t.preview) + '</span>') +
-            '</div><div class="work-body"><h4>' + esc((lang === 'en' ? '[Project name ' : '[Назва проєкту ') + (i + 1) + ']') +
-            '</h4><div class="tags" style="padding-top: 0; margin-top: 0"><span class="tag">' + esc(cat.themes[w[1]][lang]) + '</span></div></div></article>');
-        }
-      });
-      return items.length ? '<div class="group"><h3>' + esc(cat.types[typeId][lang]) + '</h3><div class="works">' + items.join('') + '</div></div>' : '';
+  function catLabel(id) {
+    for (var i = 0; i < CATS.length; i++) if (CATS[i].id === id) return CATS[i].title[lang];
+    return '';
+  }
+
+  function renderGrid() {
+    var filters = [{ id: 'all', label: t.all }].concat(CATS.map(function (c) { return { id: c.id, label: c.title[lang] }; }));
+    $('#pfilters').innerHTML = filters.map(function (f) {
+      var on = state.cat === f.id;
+      return '<button type="button" class="chip' + (on ? ' on' : '') + '" aria-pressed="' + on + '" data-filter="' + f.id + '">' + esc(f.label) + '</button>';
     }).join('');
-    modalEl.innerHTML = '<div class="modal-in">' +
-      '<div class="modal-top"><h2 id="modalTitle">' + esc(cat.title[lang]) + '</h2><button type="button" class="close" data-close-modal aria-label="' + esc(t.close) + '">' + CLOSE_SVG + '</button></div>' +
-      '<div class="tabs">' + CATS.map(function (c) {
-        return '<button type="button" class="chip tab' + (c.id === cat.id ? ' on' : '') + '" aria-pressed="' + (c.id === cat.id) + '" data-tab="' + c.id + '">' + esc(c.title[lang]) + '</button>';
-      }).join('') + '</div>' +
-      '<div class="filters"><span class="lbl">' + esc(t.theme) + '</span>' + themes.map(function (th) {
-        return '<button type="button" class="chip' + (state.theme === th.id ? ' on' : '') + '" aria-pressed="' + (state.theme === th.id) + '" data-theme="' + th.id + '">' + esc(th.label) + '</button>';
-      }).join('') + '</div>' +
-      (groups || '<p>' + esc(t.empty) + '</p>') + '</div>';
-    if (focusSel) { var f = $(focusSel, modalEl); if (f) f.focus(); }
+    $('#pgrid').innerHTML = WORKS.map(function (w, i) {
+      if (state.cat !== 'all' && w.cat !== state.cat) return '';
+      return '<button type="button" class="pcard" data-open-work="' + i + '"><div class="pthumb">' +
+        (w.img ? '<img src="' + esc(w.img) + '" alt="" loading="lazy">' : '<span>' + esc(t.preview) + '</span>') +
+        '</div><div class="pbody"><h3>' + esc(w.title[lang]) + '</h3><span class="tag">' + esc(catLabel(w.cat)) + '</span></div></button>';
+    }).join('');
+  }
+
+  // ---- Image popup (lightbox) with zoom -------------------------------------
+  var PH_W = 1200, PH_H = 800, STEPS = [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4];
+
+  function naturalWidth() {
+    var img = $('#lbImg');
+    return img ? (img.naturalWidth || 0) : PH_W;
+  }
+
+  function applyZoom(keepCenter) {
+    var st = $('#lbStage'); if (!st) return;
+    var z = state.zoom, fx = 0.5, fy = 0.5;
+    if (keepCenter && st.scrollWidth > 0 && st.scrollHeight > 0) {
+      fx = (st.scrollLeft + st.clientWidth / 2) / st.scrollWidth;
+      fy = (st.scrollTop + st.clientHeight / 2) / st.scrollHeight;
+    }
+    var img = $('#lbImg'), ph = $('#lbPh');
+    if (img && img.naturalWidth) img.style.width = Math.round(img.naturalWidth * z) + 'px';
+    if (ph) { ph.style.width = Math.round(PH_W * z) + 'px'; ph.style.height = Math.round(PH_H * z) + 'px'; }
+    $('#lbPct').textContent = Math.round(z * 100) + '%';
+    if (keepCenter) {
+      st.scrollLeft = fx * st.scrollWidth - st.clientWidth / 2;
+      st.scrollTop = fy * st.scrollHeight - st.clientHeight / 2;
+    }
+    st.classList.toggle('pan', st.scrollWidth > st.clientWidth || st.scrollHeight > st.clientHeight);
+  }
+
+  function setZoom(z) { state.zoom = Math.max(0.1, Math.min(4, z)); applyZoom(true); }
+
+  function zoomAction(a) {
+    var z = state.zoom, i;
+    if (a === 'in') { for (i = 0; i < STEPS.length; i++) if (STEPS[i] > z + 0.001) { setZoom(STEPS[i]); return; } setZoom(4); }
+    else if (a === 'out') { for (i = STEPS.length - 1; i >= 0; i--) if (STEPS[i] < z - 0.001) { setZoom(STEPS[i]); return; } setZoom(0.25); }
+    else if (a === 'reset') setZoom(1);
+    else if (a === 'fit') {
+      var st = $('#lbStage'), n = naturalWidth();
+      if (st && n) setZoom(Math.min(1, (st.clientWidth - 48) / n));
+    }
+  }
+
+  function renderLb() {
+    var w = WORKS[state.lb]; if (!w) return;
+    var title = w.title[lang];
+    lbEl.innerHTML =
+      '<div class="lb-top"><div class="lb-title"><h2 id="lbTitle">' + esc(title) + '</h2><span class="tag">' + esc(catLabel(w.cat)) + '</span></div>' +
+      '<button type="button" class="close" data-close-lb aria-label="' + esc(t.close) + '">' + CLOSE_SVG + '</button></div>' +
+      '<div class="lb-stage" id="lbStage">' +
+      (w.img ? '<img class="lb-img" id="lbImg" src="' + esc(w.img) + '" alt="' + esc(title) + '" draggable="false">'
+             : '<div class="lb-ph" id="lbPh">' + esc(t.preview) + '</div>') + '</div>' +
+      '<div class="lb-ctl">' +
+      '<button type="button" data-zoom="out" aria-label="' + esc(t.zoomOut) + '">−</button>' +
+      '<button type="button" class="pct" id="lbPct" data-zoom="reset" aria-label="' + esc(t.zoomReset) + '">100%</button>' +
+      '<button type="button" data-zoom="in" aria-label="' + esc(t.zoomIn) + '">+</button>' +
+      '<button type="button" class="pct" data-zoom="fit" aria-label="' + esc(t.zoomFit) + '">' + esc(t.fit) + '</button></div>';
+    var img = $('#lbImg');
+    if (img && !(img.complete && img.naturalWidth)) img.addEventListener('load', function () { applyZoom(false); });
+    applyZoom(false);
   }
 
   // ---- Sticky "About" column: if it is taller than the screen, let its bottom scroll into view ----
@@ -737,7 +740,7 @@ function getData() {
     $('#heroImg').alt = t.photoAlt + ': ' + t.nameA.replace(/\u00a0/g, ' ') + t.nameB;
     updateBurgerLabel();
     renderLists();
-    if (state.modal) renderModal();
+    if (state.lb !== null) renderLb();
     if (!contactEl.hidden) refreshContactTexts();
     syncSticky();
     if (persist) { try { localStorage.setItem('lang', l); } catch (e) {} }
@@ -753,15 +756,15 @@ function getData() {
   // ---- Overlays -------------------------------------------------------------
   function lock(on) { document.body.style.overflow = on ? 'hidden' : ''; }
 
-  function openModal(id, opener) {
+  function openWork(i, opener) {
     lastFocus = opener || document.activeElement;
-    state.modal = id; state.theme = 'all';
-    modalEl.hidden = false; lock(true);
-    modalEl.scrollTop = 0;
-    renderModal('.close');
+    state.lb = i; state.zoom = 1;
+    lbEl.hidden = false; lock(true);
+    renderLb();
+    var c = $('.close', lbEl); if (c) c.focus();
   }
-  function closeModal() {
-    state.modal = null; modalEl.hidden = true; modalEl.innerHTML = '';
+  function closeLb() {
+    state.lb = null; lbEl.hidden = true; lbEl.innerHTML = '';
     if (contactEl.hidden) lock(false);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
@@ -786,7 +789,7 @@ function getData() {
   }
   function closeContact() {
     contactEl.hidden = true;
-    if (modalEl.hidden) lock(false);
+    if (lbEl.hidden) lock(false);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
@@ -840,10 +843,10 @@ function getData() {
   // ---- Events ---------------------------------------------------------------
   document.addEventListener('click', function (e) {
     var el = e.target, x;
-    if ((x = el.closest('[data-open-cat]'))) { openModal(x.getAttribute('data-open-cat'), x); return; }
-    if ((x = el.closest('[data-tab]'))) { state.modal = x.getAttribute('data-tab'); state.theme = 'all'; renderModal('[data-tab="' + state.modal + '"]'); return; }
-    if ((x = el.closest('[data-theme]'))) { state.theme = x.getAttribute('data-theme'); renderModal('[data-theme="' + state.theme + '"]'); return; }
-    if (el.closest('[data-close-modal]') || el === modalEl) { closeModal(); return; }
+    if ((x = el.closest('[data-open-work]'))) { openWork(+x.getAttribute('data-open-work'), x); return; }
+    if ((x = el.closest('[data-filter]'))) { state.cat = x.getAttribute('data-filter'); renderGrid(); var nf = $('[data-filter="' + state.cat + '"]'); if (nf) nf.focus(); return; }
+    if ((x = el.closest('[data-zoom]'))) { zoomAction(x.getAttribute('data-zoom')); return; }
+    if (el.closest('[data-close-lb]')) { closeLb(); return; }
     if ((x = el.closest('[data-open-contact]'))) { openContact(x); return; }
     if (el.closest('[data-close-contact]') || el === contactEl) { closeContact(); return; }
     if ((x = el.closest('[data-lang]'))) { setLang(x.getAttribute('data-lang'), true); return; }
@@ -852,11 +855,16 @@ function getData() {
   });
 
   document.addEventListener('keydown', function (e) {
-    var layer = !contactEl.hidden ? contactEl : (!modalEl.hidden ? modalEl : null);
+    var layer = !contactEl.hidden ? contactEl : (!lbEl.hidden ? lbEl : null);
     if (e.key === 'Escape') {
       if (layer === contactEl) closeContact();
-      else if (layer === modalEl) closeModal();
+      else if (layer === lbEl) closeLb();
       else if (burger.classList.contains('open')) { setMenu(false); burger.focus(); }
+      return;
+    }
+    if (layer === lbEl && (e.key === '+' || e.key === '=' || e.key === '-' || e.key === '_' || e.key === '0')) {
+      e.preventDefault();
+      zoomAction(e.key === '0' ? 'reset' : (e.key === '-' || e.key === '_') ? 'out' : 'in');
       return;
     }
     if (e.key === 'Tab' && layer) { // keep focus inside the open popup
@@ -867,6 +875,32 @@ function getData() {
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
+
+  // Ctrl/Cmd + wheel (and trackpad pinch) zooms the popup image; plain wheel scrolls it.
+  lbEl.addEventListener('wheel', function (e) {
+    if (!(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault();
+    setZoom(state.zoom * (e.deltaY < 0 ? 1.1 : 1 / 1.1));
+  }, { passive: false });
+
+  // Drag to pan a zoomed image with the mouse.
+  var drag = null;
+  lbEl.addEventListener('pointerdown', function (e) {
+    var st = e.target.closest ? e.target.closest('.lb-stage') : null;
+    if (!st || e.pointerType !== 'mouse' || e.button !== 0) return;
+    if (st.scrollWidth <= st.clientWidth && st.scrollHeight <= st.clientHeight) return;
+    drag = { st: st, x: e.clientX, y: e.clientY, l: st.scrollLeft, t: st.scrollTop };
+    st.setPointerCapture(e.pointerId); st.classList.add('drag');
+  });
+  lbEl.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    drag.st.scrollLeft = drag.l - (e.clientX - drag.x);
+    drag.st.scrollTop = drag.t - (e.clientY - drag.y);
+  });
+  function endDrag() { if (drag) { drag.st.classList.remove('drag'); drag = null; } }
+  lbEl.addEventListener('pointerup', endDrag);
+  lbEl.addEventListener('pointercancel', endDrag);
+  window.addEventListener('resize', function () { if (state.lb !== null) applyZoom(false); });
 
   var hero = $('#hero');
   hero.addEventListener('mousemove', function (e) {
