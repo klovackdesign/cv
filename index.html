@@ -590,14 +590,17 @@ function getData() {
 
   // ---- Settings -------------------------------------------------------------
   var EMAIL = 'yurii.klovak@gmail.com';
-  // Optional: paste a form-service URL here (e.g. Formspree: https://formspree.io/f/xxxxxxx)
-  // to deliver messages automatically. Leave empty to use the visitor's email app instead.
-  var FORM_ENDPOINT = '';
+  // Messages are delivered to EMAIL through FormSubmit (formsubmit.co), a free form-to-email relay.
+  // After you confirm your address once (see README), you can replace the address below with the
+  // random alias FormSubmit emails you, e.g. 'https://formsubmit.co/ajax/a1b2c3d4e5f6...',
+  // so your address isn't visible in the page source.
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL;
 
   T.en.sentOk = 'Thank you! Your message has been sent.';
   T.uk.sentOk = 'Дякую! Ваше повідомлення надіслано.';
-  T.en.sendFail = 'Could not send the message. Please try again or write directly to';
-  T.uk.sendFail = 'Не вдалося надіслати повідомлення. Спробуйте ще раз або напишіть напряму на';
+  T.en.sendFail = 'We couldn’t send your message automatically. Please use the button below to send it from your email app.';
+  T.en.sending = 'Sending…'; T.uk.sending = 'Надсилання…';
+  T.uk.sendFail = 'Не вдалося надіслати повідомлення автоматично. Скористайтеся кнопкою нижче, щоб надіслати його зі свого поштового застосунку.';
   var TITLES = {
     en: 'Yurii Klovak — Web Designer | UI/UX, Email & Ads',
     uk: 'Юрій Кловак — веб-дизайнер | UI/UX, Email та реклама'
@@ -738,7 +741,7 @@ function getData() {
 
   var sentMode = 'mail';
   function refreshContactTexts() {
-    if (!$('#sentView').hidden) $('#sentText').textContent = sentMode === 'ok' ? t.sentOk : t.sentMsg;
+    if (!$('#sentView').hidden) $('#sentText').textContent = sentMode === 'ok' ? t.sentOk : t.sendFail;
     $('#capQ').textContent = cap.a + ' + ' + cap.b + ' = ?';
   }
   function newCaptcha() {
@@ -764,7 +767,7 @@ function getData() {
     sentMode = mode;
     form.hidden = true;
     $('#sentView').hidden = false;
-    $('#sentText').textContent = mode === 'ok' ? t.sentOk : t.sentMsg;
+    $('#sentText').textContent = mode === 'ok' ? t.sentOk : t.sendFail;
     $('#mailBtn').hidden = mode === 'ok';
     $('#mailNote').hidden = mode === 'ok';
     if (mode === 'mail') {
@@ -782,20 +785,28 @@ function getData() {
     if (parseInt($('#f-cap').value.trim(), 10) !== cap.a + cap.b) { $('#errCap').hidden = false; newCaptcha(); $('#f-cap').value = ''; return; }
     if ($('#f-web').value) { closeContact(); return; } // honeypot filled: bot
     if (!FORM_ENDPOINT) { showSent('mail'); return; }
-    var btn = $('#sendBtn'); btn.disabled = true;
+    var btn = $('#sendBtn');
+    if (btn.disabled) return;
+    btn.disabled = true; btn.textContent = t.sending;
+    var done = function () { btn.disabled = false; btn.textContent = t.fSend; };
     fetch(FORM_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, message: msg })
+      body: JSON.stringify({
+        name: name, email: email, message: msg,
+        _subject: 'New message from klovackdesign website',
+        _template: 'table',
+        _captcha: 'false'
+      })
     }).then(function (r) {
-      btn.disabled = false;
-      if (r.ok) showSent('ok');
-      else throw new Error('bad status');
+      return r.json().then(function (d) { return { ok: r.ok, d: d }; });
+    }).then(function (res) {
+      done();
+      if (res.ok && String(res.d.success) !== 'false') showSent('ok');
+      else showSent('mail'); // delivery failed: fall back to the visitor's email app
     }).catch(function () {
-      btn.disabled = false;
-      var el = $('#errSend');
-      el.textContent = t.sendFail + ' ' + EMAIL;
-      el.hidden = false;
+      done();
+      showSent('mail');
     });
   });
 

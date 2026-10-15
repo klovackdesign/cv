@@ -24,11 +24,21 @@ as the `works` list above each one, e.g. `imgs: ['images/ui-1.jpg', 'images/ui-2
 The same images fill the category previews, the popups and the collage behind "Discuss Project".
 Use JPG/WebP, about 1200px wide.
 
-## Contact form
-By default, after the visitor passes the anti-spam question, a button opens their email app with the
-message prefilled for yurii.klovak@gmail.com.
-To get messages delivered automatically: create a free form at formspree.io (or a similar service) and paste its
-URL into `FORM_ENDPOINT` near the top of the script in `index.html`.
+## Contact form (delivers straight to your inbox)
+The form sends each message to yurii.klovak@gmail.com through FormSubmit (formsubmit.co), a free relay, and
+shows the visitor a "message sent" confirmation. If the automatic send ever fails, the visitor gets a button that
+opens their email app with the message prefilled, so nothing is lost.
+
+**One-time activation (required):**
+1. Put the site online (it won't send from a file opened on your computer or from the design editor).
+2. Fill in and submit the form once yourself.
+3. FormSubmit emails yurii.klovak@gmail.com a confirmation link (check Spam/Promotions). Click it.
+4. From then on every message arrives in your inbox. Reply goes straight to the sender.
+5. Recommended: FormSubmit also emails you a random alias. In `index.html`, change the line
+   `var FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + EMAIL;` to
+   `var FORM_ENDPOINT = 'https://formsubmit.co/ajax/<your-random-alias>';` so your address isn't visible to spam bots.
+
+Note: messages pass through FormSubmit's servers before reaching you.
 
 ## Still placeholders
 About-me paragraphs, testimonials ("[Client name]" etc.) and project names are placeholders — search for the
