@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yurii Klovak — Web Designer | UI/UX, Email &amp; Ads</title>
+<meta name="description" content="Yurii Klovak — experienced UI/UX, email and ads designer from Ivano-Frankivsk, Ukraine. Minimalism, pixel perfect, individual approach.">
+<meta name="theme-color" content="#0a0e0c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yurii Klovak — Web Designer | UI/UX, Email &amp; Ads">
+<meta property="og:description" content="Experienced UI/UX, email and ads designer. Minimalism, pixel perfect, individual approach.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236b8f71'/%3E%3Ctext x='32' y='44' font-size='34' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%230a0e0c'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&amp;family=Unbounded:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { margin: 0; background: #0a0e0c; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+.page { --accent: #6b8f71; --bg: #0a0e0c; --surface: #1b1f1c; --text: #a7b8a6; background: var(--bg); color: var(--text); font-family: 'Onest', system-ui, sans-serif; font-size: 17px; line-height: 1.65; min-height: 100vh; box-sizing: border-box; }
+.page * { box-sizing: border-box; }
+.page h1, .page h2, .page h3, .page h4 { font-family: 'Unbounded', 'Onest', sans-serif; color: #eaf0e8; margin: 0; font-weight: 500; line-height: 1.2; }
+.page p { margin: 0; }
+.page a { color: inherit; text-decoration: none; }
+.page button, .page input, .page textarea { font-family: 'Onest', system-ui, sans-serif; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.header { position: sticky; top: 0; z-index: 50; background: rgba(10,14,12,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.header-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-top: 12px; padding-bottom: 12px; }
+.brand { font-family: 'Unbounded', sans-serif; font-weight: 500; font-size: 17px; color: #eaf0e8; letter-spacing: 0.01em; }
+.brand b { color: var(--accent); font-weight: 500; }
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 15px; color: var(--text); border-radius: 999px; transition: color .2s; }
+.nav a:hover { color: var(--accent); }
+.burger { display: none; position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--accent); cursor: pointer; border-radius: 50%; }
+.burger .bar { position: absolute; left: 11px; width: 22px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .35s ease, opacity .25s ease, top .35s ease; }
+.burger .b1 { top: 14px; } .burger .b2 { top: 21px; } .burger .b3 { top: 28px; }
+.burger.open .b1 { top: 21px; transform: rotate(45deg); }
+.burger.open .b2 { opacity: 0; transform: scaleX(0.2); }
+.burger.open .b3 { top: 21px; transform: rotate(-45deg); }
+.lang { display: inline-flex; background: var(--surface); border-radius: 999px; padding: 3px; }
+.lang button { min-width: 44px; min-height: 38px; border: 0; background: transparent; color: var(--text); border-radius: 999px; font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.04em; }
+.lang button.on { background: var(--accent); color: var(--bg); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 32px; border-radius: 999px; background: var(--accent); color: var(--bg) !important; font-weight: 600; font-size: 16px; border: 0; cursor: pointer; transition: transform .2s, opacity .2s; }
+.btn:hover { transform: translateY(-2px); opacity: .92; }
+
+.hero { position: relative; overflow: hidden; padding: 96px 0 104px; background: #070a08; }
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 48px; align-items: center; }
+.eyebrow { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; font-weight: 500; }
+.hero h1 { font-size: clamp(32px, 4.6vw, 58px); letter-spacing: -0.01em; }
+.hero p.lead { max-width: 520px; margin-top: 28px; font-size: 19px; }
+.hero .btn { margin-top: 44px; }
+.cursor-glow { width: 440px; height: 440px; top: 18%; left: 34%; opacity: 0.14; transform: translate3d(calc(var(--mx, 0) * 220px), calc(var(--my, 0) * 140px), 0); transition: transform .8s ease-out; }
+@keyframes rvIn { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@supports (animation-timeline: view()) {
+  .rv { animation: rvIn linear both; animation-timeline: view(); animation-range: entry 0% entry 35%; }
+}
+.fl { position: absolute; z-index: 1; pointer-events: none; transform: translate3d(calc(var(--mx, 0) * var(--d, 20) * 1px), calc(var(--my, 0) * var(--d, 20) * 1px), 0); transition: transform .45s ease-out; }
+.fl i { display: block; animation: drift 9s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: translateY(-12px) rotate(0deg); } to { transform: translateY(14px) rotate(28deg); } }
+.ring { width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; }
+.pt { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+.sq { width: 24px; height: 24px; border: 1.5px solid var(--accent); border-radius: 6px; }
+.plus { width: 22px; height: 22px; position: relative; }
+.plus::before, .plus::after { content: ''; position: absolute; background: var(--accent); }
+.plus::before { left: 10px; top: 0; width: 2px; height: 22px; }
+.plus::after { top: 10px; left: 0; height: 2px; width: 22px; }
+.bar { width: 54px; height: 2px; background: var(--accent); border-radius: 2px; }
+@media (prefers-reduced-motion: reduce) { .rv { animation: none !important; } .fl i { animation: none; } .fl, .cursor-glow { transition: none; } }
+.glow { position: absolute; border-radius: 50%; background: var(--accent); filter: blur(110px); pointer-events: none; z-index: 0; }
+.hero-visual { position: relative; width: 100%; max-width: 480px; margin-left: auto; padding: 28px 40px; }
+.photo { position: relative; aspect-ratio: 4 / 5; border-radius: 36px; overflow: hidden; background: var(--surface); border: 1px solid rgba(255,255,255,0.08); display: grid; place-items: center; box-shadow: 0 0 80px color-mix(in srgb, var(--accent) 12%, transparent); }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-ph { display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 14px; color: #6f7f6e; }
+.sk { position: absolute; z-index: 3; font-size: 14px; font-weight: 500; padding: 7px 16px; border-radius: 999px; background: rgba(30,30,34,0.92); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); white-space: nowrap; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.s0 { top: 2%; left: -2%; } .s1 { top: 15%; right: -2%; } .s2 { top: 45%; left: -6%; } .s3 { top: 60%; right: -6%; } .s4 { bottom: 9%; left: 4%; } .s5 { bottom: 1%; right: 8%; }
+
+.section { padding: 96px 0; }
+.s-about { background: #0a0f0c; border-top: 1px solid color-mix(in srgb, var(--accent) 14%, transparent); }
+.s-port { background: #0d130f; }
+.s-test { background: #080c09; }
+.sec-head { margin-bottom: 48px; max-width: 640px; }
+.sec-head h2 { font-size: clamp(26px, 3.6vw, 40px); }
+.sec-eyebrow { font-family: 'Unbounded', sans-serif; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.sec-head h2::after, .about-grid .overview h2::after, .cta-in h2::after { content: ''; display: block; width: 52px; height: 3px; border-radius: 2px; background: var(--accent); margin-top: 20px; }
+.cta-in h2::after { margin-left: auto; margin-right: auto; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.card { transition: border-color .25s; }
+.card:hover { border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.qicon { color: var(--accent); }
+.sec-head p { margin-top: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.card { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.card h3 { font-size: 19px; }
+.period { font-size: 14px; color: var(--accent); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 10px; }
+.tag { font-size: 13px; font-weight: 500; padding: 5px 13px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); color: var(--accent); }
+
+.about-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: start; }
+.about-grid h2 { font-size: clamp(26px, 3.6vw, 40px); margin-bottom: 28px; }
+.about-grid .overview { position: sticky; top: 104px; }
+.side-block { margin-top: 32px; }
+.side-h { font-size: 15px !important; margin-bottom: 14px !important; }
+.langs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.langs li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.langs .ln { color: #eaf0e8; font-weight: 500; }
+.langs .ln::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: middle; }
+.about-grid .overview p + p { margin-top: 16px; }
+.exp-label { font-family: 'Unbounded', sans-serif; font-size: 14px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
+.exp-list { display: flex; flex-direction: column; gap: 20px; }
+
+.cat { text-align: left; cursor: pointer; color: inherit; font-size: 17px; line-height: 1.6; transition: transform .25s, border-color .25s; padding: 14px 14px 28px; gap: 12px; }
+.cat:hover { transform: translateY(-4px); border-color: var(--accent); }
+.cat-body { display: flex; flex-direction: column; gap: 10px; padding: 8px 14px 0; flex: 1; }
+.mosaic { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-rows: repeat(2, 1fr); gap: 8px; height: 190px; }
+.mosaic .tile:first-child { grid-row: 1 / span 2; }
+.tile { position: relative; overflow: hidden; border-radius: 12px; background: #262c27; }
+.tile:nth-child(2) { background: color-mix(in srgb, var(--accent) 16%, var(--surface)); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.cat-num { font-family: 'Unbounded', sans-serif; font-size: 14px; color: var(--accent); }
+.cat-cta { margin-top: auto; padding-top: 6px; color: var(--accent); font-weight: 600; font-size: 15px; }
+
+.tgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.tcard { padding: 28px 24px; gap: 20px; }
+.tcard .quote { font-size: 16px; line-height: 1.6; color: #dfe8dd; }
+.tcard .who { margin-top: auto; }
+.who h4 { font-size: 15px; }
+.who span { font-size: 14px; }
+
+.cta { position: relative; overflow: hidden; background: #050806; min-height: 560px; display: grid; place-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
+.collage { position: absolute; top: 50%; left: 50%; width: 135%; transform: translate(-50%, -50%) rotate(-8deg); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; opacity: 0.6; }
+.ct { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; }
+.ct img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.ct0 { background: var(--surface); } .ct1 { background: #262c27; } .ct2 { background: color-mix(in srgb, var(--accent) 20%, var(--surface)); }
+.scrim { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(10,14,12,0.55) 0%, rgba(10,14,12,0.9) 100%); }
+.cta-in { position: relative; z-index: 2; text-align: center; max-width: 720px; padding: 96px 24px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.cta-in h2 { font-size: clamp(30px, 5vw, 56px); }
+.cta-in p { font-size: 19px; max-width: 520px; color: #c3d0c1; }
+.footer { background: #040605; border-top: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding: 24px 0; font-size: 15px; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.footer .soc a { width: 44px; height: 44px; }
+.totop { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); color: var(--accent) !important; font-size: 14px; font-weight: 600; transition: background .2s, color .2s; }
+.totop:hover { background: var(--accent); color: var(--bg) !important; }
+
+.field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.field label { font-size: 14px; color: #eaf0e8; font-weight: 500; }
+.field input, .field textarea { background: var(--bg); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; color: #eaf0e8; padding: 14px 16px; font-size: 16px; outline: none; width: 100%; }
+.field input { min-height: 52px; }
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus, .field textarea:focus { border-color: var(--accent); }
+.err { color: #e8a393; font-size: 15px; margin-bottom: 14px; }
+.ok { background: var(--bg); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 18px; padding: 24px; color: #eaf0e8; }
+.overlay { position: fixed; inset: 0; z-index: 110; background: rgba(4,7,5,0.8); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow-y: auto; display: flex; align-items: flex-start; justify-content: center; padding: 48px 16px; }
+.dialog { position: relative; width: 100%; max-width: 560px; background: var(--surface); border: 1px solid rgba(255,255,255,0.08); border-radius: 28px; padding: 40px 36px 36px; }
+.dialog h3 { font-size: 24px; margin-bottom: 24px; padding-right: 56px; }
+.dialog .close { position: absolute; top: 20px; right: 20px; width: 48px; height: 48px; background: var(--bg); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.capq { color: var(--accent); font-family: 'Unbounded', sans-serif; font-weight: 500; margin-left: 6px; }
+.mailnote { margin-top: 14px; font-size: 14px; }
+.sep { height: 1px; background: rgba(255,255,255,0.08); margin: 32px 0 28px; }
+.soc-label { font-family: 'Unbounded', sans-serif; font-size: 15px; color: #eaf0e8; margin-bottom: 16px; }
+.soc { display: flex; gap: 12px; }
+.soc a { width: 52px; height: 52px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); display: grid; place-items: center; transition: background .2s, color .2s; }
+.soc a:hover { background: var(--accent); color: var(--bg); }
+
+.modal { position: fixed; inset: 0; z-index: 100; background: rgba(10,14,12,0.97); overflow-y: auto; }
+.modal-in { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+.modal-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+.modal-top h2 { font-size: clamp(24px, 3.4vw, 38px); }
+.close { width: 52px; height: 52px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background: var(--surface); color: #eaf0e8; cursor: pointer; display: grid; place-items: center; flex: none; padding: 0; }
+.close:hover { border-color: var(--accent); color: var(--accent); }
+.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.tab { font-family: 'Unbounded', sans-serif; font-size: 13px; min-height: 48px; padding: 0 24px; }
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 40px; }
+.filters .lbl { font-size: 14px; margin-right: 6px; }
+.chip { min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: transparent; color: var(--text); font-size: 15px; font-weight: 500; cursor: pointer; }
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip.on { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.group { margin-bottom: 56px; }
+.group h3 { font-size: 20px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.works { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.work { background: var(--surface); border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+.thumb { position: relative; aspect-ratio: 4 / 3; background: #232924; display: grid; place-items: center; font-size: 14px; color: #6f7f6e; overflow: hidden; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.work-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.work-body h4 { font-size: 16px; }
+
+.rv { transition: transform .25s, border-color .25s; }
+@media (max-width: 760px) {
+  .header-in { gap: 0 10px; padding-top: 8px; padding-bottom: 8px; }
+  .brand { order: 1; margin-right: auto; }
+  .lang { order: 2; }
+  .burger { order: 3; display: block; margin-right: -8px; }
+  .nav { order: 4; flex-basis: 100%; flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; visibility: hidden; transition: max-height .4s ease, visibility 0s .4s; }
+  .nav.open { max-height: 360px; visibility: visible; transition: max-height .4s ease, visibility 0s; }
+  .nav a { min-height: 52px; padding: 0 4px; border-radius: 0; font-size: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .nav a:first-child { margin-top: 8px; }
+  .nav a:last-child { margin-bottom: 8px; }
+}
+@media (max-width: 1000px) {
+  .tgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .grid3, .works { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid, .about-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .about-grid .overview { position: static; }
+  .hero { padding: 56px 0 64px; }
+  .hero-visual { margin: 0 auto; max-width: 400px; }
+  .section { padding: 64px 0; }
+  .collage { width: 220%; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .tgrid { grid-template-columns: minmax(0, 1fr); }
+  .hero-visual { padding: 24px 12px; }
+  .s2 { left: -4px; } .s3 { right: -4px; }
+  .sk { font-size: 12px; padding: 5px 12px; }
+  .dialog { padding: 32px 22px 28px; }
+}
+
+[hidden] { display: none !important; }
+.page a:focus-visible, .page button:focus-visible, .page input:focus-visible, .page textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+</style>
+</head>
+<body>
+<div class="page" id="page">
+
+<header class="header">
+  <div class="wrap header-in">
+    <a class="brand" href="#top">klovack<b>design</b></a>
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <a href="#about" data-nav="0">About</a>
+      <a href="#portfolio" data-nav="1">Portfolio</a>
+      <a href="#testimonials" data-nav="2">Testimonials</a>
+      <a href="#contact" data-nav="3">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="on" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="uk" aria-pressed="false">UA</button>
+    </div>
+    <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="glow" style="width: 560px; height: 560px; top: -120px; right: -80px; opacity: 0.2"></div>
+    <div class="glow" style="width: 380px; height: 380px; bottom: -160px; left: -100px; opacity: 0.12"></div>
+    <div class="glow cursor-glow"></div>
+    <div class="fl" style="top: 14%; left: 5%; --d: 36; opacity: 0.5"><i class="ring"></i></div>
+    <div class="fl" style="top: 62%; left: 3%; --d: 22; opacity: 0.45"><i class="plus"></i></div>
+    <div class="fl" style="top: 80%; left: 22%; --d: 48; opacity: 0.35"><i class="sq"></i></div>
+    <div class="fl" style="top: 9%; left: 30%; --d: 18; opacity: 0.6"><i class="pt"></i></div>
+    <div class="fl" style="top: 46%; left: 46%; --d: 44; opacity: 0.3"><i class="ring" style="width: 20px; height: 20px"></i></div>
+    <div class="fl" style="top: 88%; left: 52%; --d: 28; opacity: 0.5"><i class="bar"></i></div>
+    <div class="fl" style="top: 8%; left: 55%; --d: 30; opacity: 0.4"><i class="plus"></i></div>
+    <div class="fl" style="top: 30%; right: 4%; --d: 40; opacity: 0.45"><i class="sq" style="width: 16px; height: 16px"></i></div>
+    <div class="fl" style="top: 70%; right: 3%; --d: 26; opacity: 0.5"><i class="ring" style="width: 24px; height: 24px"></i></div>
+    <div class="fl" style="top: 92%; right: 14%; --d: 16; opacity: 0.6"><i class="pt"></i></div>
+    <div class="fl" style="top: 52%; left: 38%; --d: 52; opacity: 0.35"><i class="pt" style="width: 6px; height: 6px"></i></div>
+
+    <div class="wrap hero-grid">
+      <div class="rv">
+        <div class="eyebrow" style="font-size: 12px; text-transform: uppercase; margin-bottom: 24px; display: block; padding: 0" data-t="eyebrow">WEB DESIGNER | IF, Ukraine</div>
+        <h1><span data-t="nameA">Yurii </span><em data-t="nameB">Klovak</em></h1>
+        <p class="lead" style="font-size: 16px; color: #eaf0e8" data-t="heroText">Hi there! I am an experienced UI/UX, Email &amp; Ads designer. I have the case when a hobby became a favorite job, more than 12 years ago. Minimalism, pixel perfect, individual approach — this is about me.</p>
+        <button type="button" class="btn" data-open-contact data-t="heroBtn">Get in touch</button>
+      </div>
+      <div class="hero-visual rv">
+        <div class="photo">
+          <img id="heroImg" src="portrait.jpg" alt="Portrait" width="1000" height="1000" fetchpriority="high">
+        </div>
+        <span class="sk s0" data-sk="0">UI/UX</span>
+        <span class="sk s1" data-sk="1">Email design</span>
+        <span class="sk s2" data-sk="2">Advertising</span>
+        <span class="sk s3" data-sk="3">Branding</span>
+        <span class="sk s4" data-sk="4">Prototyping</span>
+        <span class="sk s5" data-sk="5">Design systems</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section s-about" id="about">
+    <div class="wrap about-grid">
+      <div class="overview rv">
+        <div class="sec-eyebrow" data-t="eAbout">01 — About</div>
+        <h2 data-t="aboutTitle">About me</h2>
+        <p data-t="aboutP1">[Write a short overview about yourself: who you are, what you design and what you care about.]</p>
+        <p data-t="aboutP2">[Add one or two sentences about how you work with clients and teams.]</p>
+        <div class="side-block">
+          <h3 class="side-h" data-t="skillsTitle">Skills</h3>
+          <div class="tags" id="skillTags" style="margin-top: 0; padding-top: 0"></div>
+        </div>
+        <div class="side-block">
+          <h3 class="side-h" data-t="langTitle">Languages</h3>
+          <ul class="langs" id="langs"></ul>
+        </div>
+      </div>
+      <div>
+        <div class="exp-label rv" data-t="aboutSub">Work experience</div>
+        <div class="exp-list" id="roles"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section s-port" id="portfolio">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="sec-eyebrow" data-t="ePort">02 — Portfolio</div>
+        <h2 data-t="portTitle">Portfolio</h2>
+        <p data-t="portSub">Pick a category to see selected work.</p>
+      </div>
+      <div class="grid3" id="cats"></div>
+    </div>
+  </section>
+
+  <section class="section s-test" id="testimonials">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="sec-eyebrow" data-t="eTest">03 — Testimonials</div>
+        <h2 data-t="testTitle">Testimonials</h2>
+      </div>
+      <div class="tgrid" id="tests"></div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="collage" id="collage" aria-hidden="true"></div>
+    <div class="scrim"></div>
+    <div class="cta-in rv">
+      <h2 data-t="ctaTitle">Let’s discuss your project</h2>
+      <p data-t="ctaText">Tell me what you have in mind and we’ll find the right way to bring it to life.</p>
+      <button type="button" class="btn" data-open-contact data-t="ctaBtn">Discuss Project</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap foot">
+    <span data-t="copy">© 2026 klovackdesign. All rights reserved.</span>
+    <div class="soc">
+<a href="https://www.linkedin.com/in/klovackdesign/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M8 11v6"></path><circle cx="8" cy="7.8" r="0.8"></circle><path d="M12 17v-6"></path><path d="M12 13.5c0-1.6 1.2-2.5 2.6-2.5 1.5 0 2.4.9 2.4 2.7V17"></path></svg></a>
+<a href="https://t.me/klovackdesign" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 3.5L2.5 10.8l6.2 2.2 2.3 6.5 3.2-4.2 4.6 3.4z"></path><path d="M8.7 13l12.8-9.5"></path></svg></a>
+<a href="https://www.behance.net/klovackdesign" target="_blank" rel="noopener noreferrer" aria-label="Behance"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"></path></svg></a>
+    </div>
+    <a class="totop" href="#top"><span data-t="top">Back to top</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></a>
+  </div>
+</footer>
+
+<!-- Contact popup -->
+<div class="overlay" id="contactOverlay" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" data-aria="ctaBtn" aria-label="Discuss Project">
+    <button type="button" class="close" data-close-contact data-aria="close" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <h3 data-t="formTitle">Discuss your project</h3>
+
+    <div class="ok" id="sentView" hidden>
+      <p id="sentText"></p>
+      <a class="btn" id="mailBtn" style="margin-top: 18px" href="#" data-t="mailBtn">Send via my email app</a>
+      <p class="mailnote" id="mailNote"><span data-t="mailNote">Or write directly to</span> <a href="mailto:yurii.klovak@gmail.com" style="color: var(--accent)">yurii.klovak@gmail.com</a></p>
+    </div>
+
+    <form id="contactForm" novalidate>
+      <div class="field">
+        <label for="f-name" data-t="fName">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="f-email" data-t="fEmail">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="f-msg" data-t="fMsg">Message</label>
+        <textarea id="f-msg" name="message"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="f-web">Website</label>
+        <input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="f-cap"><span data-t="capTitle">Anti-spam check:</span> <b class="capq" id="capQ"></b></label>
+        <input id="f-cap" name="check" type="text" inputmode="numeric" autocomplete="off">
+      </div>
+      <div class="err" id="errFields" role="alert" hidden data-t="fErr">Please fill in all fields and enter a valid email.</div>
+      <div class="err" id="errCap" role="alert" hidden data-t="capErr">Incorrect answer — please try the new question.</div>
+      <div class="err" id="errSend" role="alert" hidden></div>
+      <button type="submit" class="btn" id="sendBtn" data-t="fSend">Send message</button>
+    </form>
+
+    <div class="sep"></div>
+    <div class="soc-label" data-t="socLabel">Contact me here</div>
+    <div class="soc">
+<a href="https://www.linkedin.com/in/klovackdesign/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M8 11v6"></path><circle cx="8" cy="7.8" r="0.8"></circle><path d="M12 17v-6"></path><path d="M12 13.5c0-1.6 1.2-2.5 2.6-2.5 1.5 0 2.4.9 2.4 2.7V17"></path></svg></a>
+<a href="https://t.me/klovackdesign" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 3.5L2.5 10.8l6.2 2.2 2.3 6.5 3.2-4.2 4.6 3.4z"></path><path d="M8.7 13l12.8-9.5"></path></svg></a>
+<a href="https://www.behance.net/klovackdesign" target="_blank" rel="noopener noreferrer" aria-label="Behance"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"></path></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- Portfolio popup (filled by script) -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden></div>
+
+</div>
+
+<script>
+function getData() {
+    const T = {
+      en: {
+        eyebrow: 'WEB DESIGNER | IF, Ukraine',
+        heroA: 'I design interfaces, emails and ads that ', heroB: 'people actually use.',
+        eAbout: '01 — About', ePort: '02 — Portfolio', eTest: '03 — Testimonials', top: 'Back to top',
+        heroText: 'Hi there! I am an experienced UI/UX, Email & Ads designer. I have the case when a hobby became a favorite job, more than 12 years ago. Minimalism, pixel perfect, individual approach — this is about me.',
+        heroBtn: 'Get in touch', nameA: 'Yurii\u00a0', nameB: 'Klovak',
+        photoPh: '[Your photo]', photoAlt: 'Portrait',
+        aboutTitle: 'About me',
+        aboutP1: '[Write a short overview about yourself: who you are, what you design and what you care about.]',
+        aboutP2: '[Add one or two sentences about how you work with clients and teams.]',
+        aboutSub: 'Work experience',
+        skillsTitle: 'Skills', langTitle: 'Languages',
+        portTitle: 'Portfolio',
+        portSub: 'Pick a category to see selected work.',
+        viewWork: 'View work',
+        testTitle: 'Testimonials',
+        ctaTitle: 'Let’s discuss your project',
+        ctaText: 'Tell me what you have in mind and we’ll find the right way to bring it to life.',
+        ctaBtn: 'Discuss Project',
+        formTitle: 'Discuss your project',
+        fName: 'Name', fEmail: 'Email', fMsg: 'Message',
+        fSend: 'Send message',
+        fErr: 'Please fill in all fields and enter a valid email.',
+        capTitle: 'Anti-spam check:', capErr: 'Incorrect answer — please try the new question.',
+        mailBtn: 'Send via my email app', mailNote: 'Or write directly to',
+        sentMsg: 'Thank you! Your message is ready — tap the button to send it from your email app.',
+        socLabel: 'Contact me here',
+        copy: '© 2026 klovackdesign. All rights reserved.',
+        close: 'Close', theme: 'Theme', all: 'All', preview: '[Preview image]',
+        empty: 'No work matches this theme yet.',
+        openMenu: 'Open menu', closeMenu: 'Close menu',
+        nav: [['About', '#about'], ['Portfolio', '#portfolio'], ['Testimonials', '#testimonials'], ['Contact', '#contact']],
+        skills: ['UI/UX', 'Email design', 'Advertising', 'Branding', 'Prototyping', 'Design systems'],
+        roleTitle: '[Job title] — [Company]',
+        rolePeriod: '[Start year] – [End year]',
+        roleText: '[Describe your responsibilities and key results in two or three sentences.]',
+        tName: '[Client name]', tRole: '[Role, Company]', tText: '[Paste the testimonial text here.]'
+      },
+      uk: {
+        eyebrow: 'ВЕБ ДИЗАЙНЕР | ІФ, Україна',
+        heroA: 'Проєктую інтерфейси, листи та рекламу, ', heroB: 'якими справді користуються.',
+        eAbout: '01 — Про мене', ePort: '02 — Портфоліо', eTest: '03 — Відгуки', top: 'Нагору',
+        heroText: 'Привіт! Я досвідчений UI/UX, Email & Ads дизайнер. Моя історія — це приклад того, як хобі перетворилося на улюблену роботу понад 12 років тому. Мінімалізм, увага до деталей (pixel perfect) та індивідуальний підхід — це про мене.',
+        heroBtn: 'Зв’язатися', nameA: 'Юрій\u00a0', nameB: 'Кловак',
+        photoPh: '[Ваше фото]', photoAlt: 'Портрет',
+        aboutTitle: 'Про мене',
+        aboutP1: '[Коротко розкажіть про себе: хто ви, що проєктуєте і що для вас важливо.]',
+        aboutP2: '[Додайте одне-два речення про те, як ви працюєте з клієнтами та командами.]',
+        aboutSub: 'Досвід роботи',
+        skillsTitle: 'Навички', langTitle: 'Мови',
+        portTitle: 'Портфоліо',
+        portSub: 'Оберіть категорію, щоб переглянути роботи.',
+        viewWork: 'Дивитись роботи',
+        testTitle: 'Відгуки',
+        ctaTitle: 'Обговоримо ваш проєкт',
+        ctaText: 'Розкажіть, що ви задумали, — і ми разом знайдемо найкращий спосіб втілити це.',
+        ctaBtn: 'Обговорити проєкт',
+        formTitle: 'Обговорімо ваш проєкт',
+        fName: 'Ім’я', fEmail: 'Електронна пошта', fMsg: 'Повідомлення',
+        fSend: 'Надіслати',
+        fErr: 'Заповніть усі поля та вкажіть коректну пошту.',
+        capTitle: 'Перевірка від спаму:', capErr: 'Неправильна відповідь — спробуйте нове запитання.',
+        mailBtn: 'Надіслати через поштовий застосунок', mailNote: 'Або напишіть напряму на',
+        sentMsg: 'Дякую! Повідомлення готове — натисніть кнопку, щоб надіслати його зі свого поштового застосунку.',
+        socLabel: 'Зв’язатися зі мною тут',
+        copy: '© 2026 klovackdesign. Усі права захищено.',
+        close: 'Закрити', theme: 'Тема', all: 'Усі', preview: '[Зображення проєкту]',
+        empty: 'Для цієї теми поки немає робіт.',
+        openMenu: 'Відкрити меню', closeMenu: 'Закрити меню',
+        nav: [['Про мене', '#about'], ['Портфоліо', '#portfolio'], ['Відгуки', '#testimonials'], ['Контакти', '#contact']],
+        skills: ['UI/UX', 'Email-дизайн', 'Реклама', 'Брендинг', 'Прототипування', 'Дизайн-системи'],
+        roleTitle: '[Посада] — [Компанія]',
+        rolePeriod: '[Рік початку] – [Рік завершення]',
+        roleText: '[Опишіть свої обов’язки та ключові результати у двох-трьох реченнях.]',
+        tName: '[Ім’я клієнта]', tRole: '[Посада, компанія]', tText: '[Вставте текст відгуку.]'
+      }
+    };
+    // To show real work: put image files in the /images folder and list them in the imgs arrays below,
+    // e.g. imgs: ['images/ui-1.jpg', 'images/ui-2.jpg', ...]. Order matches the works list above.
+    const PHOTO = 'portrait.jpg';
+    const CATS = [
+      {
+        id: 'ui',
+        title: { en: 'UI/UX Design', uk: 'UI/UX дизайн' },
+        desc: { en: 'Websites, apps and dashboards.', uk: 'Сайти, застосунки та дашборди.' },
+        types: {
+          web: { en: 'Web', uk: 'Веб' },
+          mobile: { en: 'Mobile apps', uk: 'Мобільні застосунки' },
+          dash: { en: 'Dashboards', uk: 'Дашборди' }
+        },
+        themes: {
+          fintech: { en: 'Fintech', uk: 'Фінтех' },
+          ecom: { en: 'E-commerce', uk: 'E-commerce' },
+          saas: { en: 'SaaS', uk: 'SaaS' }
+        },
+        works: [['web', 'fintech'], ['web', 'ecom'], ['mobile', 'saas'], ['mobile', 'fintech'], ['dash', 'saas'], ['dash', 'ecom']],
+        imgs: ['', '', '', '', '', '']
+      },
+      {
+        id: 'email',
+        title: { en: 'Email Design', uk: 'Email-дизайн' },
+        desc: { en: 'Campaigns, newsletters\nand flow emails.', uk: 'Кампанії, розсилки та транзакційні листи.' },
+        types: {
+          promo: { en: 'Promotional', uk: 'Промо-листи' },
+          trans: { en: 'Transactional', uk: 'Транзакційні' },
+          news: { en: 'Newsletters', uk: 'Розсилки' }
+        },
+        themes: {
+          retail: { en: 'Retail', uk: 'Ритейл' },
+          events: { en: 'Events', uk: 'Події' },
+          product: { en: 'Product', uk: 'Продукт' }
+        },
+        works: [['promo', 'retail'], ['promo', 'events'], ['trans', 'product'], ['trans', 'retail'], ['news', 'events'], ['news', 'product']],
+        imgs: ['', '', '', '', '', '']
+      },
+      {
+        id: 'ads',
+        title: { en: 'Advertising', uk: 'Реклама' },
+        desc: { en: 'Social, banner and print campaigns.', uk: 'Соціальні, банерні та друковані кампанії.' },
+        types: {
+          social: { en: 'Social ads', uk: 'Реклама в соцмережах' },
+          banner: { en: 'Banners', uk: 'Банери' },
+          print: { en: 'Print & outdoor', uk: 'Друк і outdoor' }
+        },
+        themes: {
+          brand: { en: 'Brand', uk: 'Бренд' },
+          seasonal: { en: 'Seasonal', uk: 'Сезонні' },
+          launch: { en: 'Product launch', uk: 'Запуск продукту' }
+        },
+        works: [['social', 'brand'], ['social', 'seasonal'], ['banner', 'launch'], ['banner', 'brand'], ['print', 'seasonal'], ['print', 'launch']],
+        imgs: ['', '', '', '', '', '']
+      }
+    ];
+    const tg = (en, uk) => ({ en, uk: uk || en });
+    const TAGS = {
+      figma: tg('Figma'), ps: tg('Adobe Photoshop'), email: tg('Email Design', 'Email-дизайн'),
+      ad: tg('Ad Design', 'Рекламний дизайн'), ai: tg('AI Design Assistants', 'AI-асистенти для дизайну'),
+      html: tg('HTML/CSS'), klaviyo: tg('Klaviyo'), mailchimp: tg('MailChimp'), sendlane: tg('Sendlane'),
+      attentive: tg('Attentive'), teamwork: tg('Teamwork', 'Командна робота'),
+      time: tg('Time Management', 'Тайм-менеджмент'), uiux: tg('UI/UX')
+    };
+    const ROLES = [
+      {
+        period: { en: 'Dec 2022 – Present · 3 yrs 11 mos.', uk: 'Грудень 2022 – дотепер · 3 р. 11 міс.' },
+        title: { en: 'Email & Ad Designer at Sweat Pants Agency', uk: 'Email- та рекламний дизайнер у Sweat Pants Agency' },
+        text: {
+          en: 'Email design and implementation: campaigns, newsletters, and flows. Ad banner design.',
+          uk: 'Дизайн і розробка email-листів: кампанії, розсилки та автоматизовані флоу. Дизайн рекламних банерів.'
+        },
+        tags: ['figma', 'ps', 'email', 'ad', 'ai', 'html', 'klaviyo', 'mailchimp', 'sendlane', 'attentive', 'teamwork', 'time']
+      },
+      {
+        period: { en: '2014 – 2022', uk: '2014 – 2022' },
+        title: { en: 'Web Designer, Freelancer', uk: 'Веб-дизайнер, фрілансер' },
+        text: {
+          en: 'Design of websites, landing pages, dashboards, and ad banners.',
+          uk: 'Дизайн вебсайтів, лендінгів, дашбордів і рекламних банерів.'
+        },
+        tags: ['figma', 'ps', 'uiux', 'ad', 'ai', 'time']
+      },
+      {
+        period: { en: 'Dec 2017 – Mar 2022 · 4 yrs 4 mos.', uk: 'Грудень 2017 – березень 2022 · 4 р. 4 міс.' },
+        title: { en: 'Product Designer at New Media Space Internet Agency', uk: 'Продуктовий дизайнер в інтернет-агенції New Media Space' },
+        text: {
+          en: 'Product: website, online directory. Updating and maintaining website and mobile app designs. Collaborating with web developers and the marketing department. Creating various types of graphics for web and marketing purposes.',
+          uk: 'Продукт: вебсайт, онлайн-довідник. Оновлення та підтримка дизайну вебсайту й мобільного застосунку. Співпраця з веб-розробниками та відділом маркетингу. Створення різних типів графіки для вебу та маркетингу.'
+        },
+        tags: ['figma', 'ps', 'uiux', 'ad', 'teamwork', 'time']
+      }
+    ];
+    const SKILLS = ['figma', 'ps', 'uiux', 'email', 'ad', 'ai', 'html', 'klaviyo', 'mailchimp', 'sendlane', 'attentive', 'teamwork', 'time'];
+    const LANGS = [
+      { name: { en: 'English', uk: 'Англійська' }, level: { en: 'Pre-Intermediate (sufficient for work)', uk: 'Pre-Intermediate (достатньо для роботи)' } },
+      { name: { en: 'Ukrainian', uk: 'Українська' }, level: { en: 'Native', uk: 'Рідна' } }
+    ];
+    return { T, CATS, TAGS, ROLES, SKILLS, LANGS, PHOTO };
+}
+
+(function () {
+  'use strict';
+  var D = getData();
+  var T = D.T, CATS = D.CATS, TAGS = D.TAGS, ROLES = D.ROLES, SKILLS = D.SKILLS, LANGS = D.LANGS;
+
+  // ---- Settings -------------------------------------------------------------
+  var EMAIL = 'yurii.klovak@gmail.com';
+  // Optional: paste a form-service URL here (e.g. Formspree: https://formspree.io/f/xxxxxxx)
+  // to deliver messages automatically. Leave empty to use the visitor's email app instead.
+  var FORM_ENDPOINT = '';
+
+  T.en.sentOk = 'Thank you! Your message has been sent.';
+  T.uk.sentOk = 'Дякую! Ваше повідомлення надіслано.';
+  T.en.sendFail = 'Could not send the message. Please try again or write directly to';
+  T.uk.sendFail = 'Не вдалося надіслати повідомлення. Спробуйте ще раз або напишіть напряму на';
+  var TITLES = {
+    en: 'Yurii Klovak — Web Designer | UI/UX, Email & Ads',
+    uk: 'Юрій Кловак — веб-дизайнер | UI/UX, Email та реклама'
+  };
+
+  // ---- Helpers --------------------------------------------------------------
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (x) {
+    return String(x).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  };
+  var CLOSE_SVG = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
+
+  var lang = 'en';
+  try { var saved = localStorage.getItem('lang'); if (saved === 'uk' || saved === 'en') lang = saved; } catch (e) {}
+  var t = T[lang];
+  var state = { modal: null, theme: 'all' };
+  var cap = { a: 3, b: 4 };
+  var lastFocus = null;
+
+  var navEl = $('#site-nav'), burger = $('#burger');
+  var modalEl = $('#modal'), contactEl = $('#contactOverlay');
+  var form = $('#contactForm');
+
+  // ---- Rendering ------------------------------------------------------------
+  function tile(src, cls) {
+    return '<div class="' + cls + '">' + (src ? '<img src="' + esc(src) + '" alt="" loading="lazy">' : '') + '</div>';
+  }
+
+  function renderLists() {
+    $('#skillTags').innerHTML = SKILLS.map(function (id) { return '<span class="tag">' + esc(TAGS[id][lang]) + '</span>'; }).join('');
+    $('#langs').innerHTML = LANGS.map(function (l) {
+      return '<li><span class="ln">' + esc(l.name[lang]) + '</span><span class="lv">' + esc(l.level[lang]) + '</span></li>';
+    }).join('');
+    $('#roles').innerHTML = ROLES.map(function (r) {
+      return '<article class="card rv"><div class="period">' + esc(r.period[lang]) + '</div><h3>' + esc(r.title[lang]) + '</h3><p>' + esc(r.text[lang]) +
+        '</p><div class="tags">' + r.tags.map(function (id) { return '<span class="tag">' + esc(TAGS[id][lang]) + '</span>'; }).join('') + '</div></article>';
+    }).join('');
+    $('#cats').innerHTML = CATS.map(function (c, i) {
+      return '<button type="button" class="card cat rv" data-open-cat="' + c.id + '"><div class="mosaic">' +
+        [0, 1, 2].map(function (k) { return tile(c.imgs[k], 'tile'); }).join('') +
+        '</div><div class="cat-body"><span class="cat-num">0' + (i + 1) + '</span><h3>' + esc(c.title[lang]) + '</h3><p>' + esc(c.desc[lang]) +
+        '</p><span class="cat-cta">' + esc(t.viewWork) + ' →</span></div></button>';
+    }).join('');
+    $('#tests').innerHTML = [0, 1, 2, 3].map(function () {
+      return '<article class="card tcard rv"><svg class="qicon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2.5L6 19h3l2-4V9a2 2 0 0 0-2-2zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2.5L16 19h3l2-4V9a2 2 0 0 0-2-2z"></path></svg>' +
+        '<p class="quote">' + esc(t.tText) + '</p><div class="who"><h4>' + esc(t.tName) + '</h4><span>' + esc(t.tRole) + '</span></div></article>';
+    }).join('');
+    var flat = [];
+    CATS.forEach(function (c) { c.imgs.forEach(function (u) { flat.push(u); }); });
+    var col = '';
+    for (var i = 0; i < 15; i++) col += tile(flat[i] || '', 'ct ct' + (i % 3));
+    $('#collage').innerHTML = col;
+  }
+
+  function renderModal(focusSel) {
+    var cat = CATS.filter(function (c) { return c.id === state.modal; })[0];
+    if (!cat) return;
+    var themeIds = Object.keys(cat.themes);
+    var themes = [{ id: 'all', label: t.all }].concat(themeIds.map(function (id) { return { id: id, label: cat.themes[id][lang] }; }));
+    var groups = Object.keys(cat.types).map(function (typeId) {
+      var items = [];
+      cat.works.forEach(function (w, i) {
+        if (w[0] === typeId && (state.theme === 'all' || w[1] === state.theme)) {
+          var src = cat.imgs[i];
+          items.push('<article class="work"><div class="thumb">' +
+            (src ? '<img src="' + esc(src) + '" alt="' + esc((lang === 'en' ? 'Project ' : 'Проєкт ') + (i + 1)) + '" loading="lazy">' : '<span>' + esc(t.preview) + '</span>') +
+            '</div><div class="work-body"><h4>' + esc((lang === 'en' ? '[Project name ' : '[Назва проєкту ') + (i + 1) + ']') +
+            '</h4><div class="tags" style="padding-top: 0; margin-top: 0"><span class="tag">' + esc(cat.themes[w[1]][lang]) + '</span></div></div></article>');
+        }
+      });
+      return items.length ? '<div class="group"><h3>' + esc(cat.types[typeId][lang]) + '</h3><div class="works">' + items.join('') + '</div></div>' : '';
+    }).join('');
+    modalEl.innerHTML = '<div class="modal-in">' +
+      '<div class="modal-top"><h2 id="modalTitle">' + esc(cat.title[lang]) + '</h2><button type="button" class="close" data-close-modal aria-label="' + esc(t.close) + '">' + CLOSE_SVG + '</button></div>' +
+      '<div class="tabs">' + CATS.map(function (c) {
+        return '<button type="button" class="chip tab' + (c.id === cat.id ? ' on' : '') + '" aria-pressed="' + (c.id === cat.id) + '" data-tab="' + c.id + '">' + esc(c.title[lang]) + '</button>';
+      }).join('') + '</div>' +
+      '<div class="filters"><span class="lbl">' + esc(t.theme) + '</span>' + themes.map(function (th) {
+        return '<button type="button" class="chip' + (state.theme === th.id ? ' on' : '') + '" aria-pressed="' + (state.theme === th.id) + '" data-theme="' + th.id + '">' + esc(th.label) + '</button>';
+      }).join('') + '</div>' +
+      (groups || '<p>' + esc(t.empty) + '</p>') + '</div>';
+    if (focusSel) { var f = $(focusSel, modalEl); if (f) f.focus(); }
+  }
+
+  // ---- Language -------------------------------------------------------------
+  function updateBurgerLabel() {
+    var open = burger.classList.contains('open');
+    burger.setAttribute('aria-label', open ? t.closeMenu : t.openMenu);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  function setLang(l, persist) {
+    lang = l; t = T[l];
+    document.documentElement.lang = l;
+    document.title = TITLES[l];
+    $$('[data-t]').forEach(function (el) { var v = t[el.getAttribute('data-t')]; if (v !== undefined) el.textContent = v; });
+    $$('[data-aria]').forEach(function (el) { el.setAttribute('aria-label', t[el.getAttribute('data-aria')]); });
+    $$('[data-nav]').forEach(function (el) { el.textContent = t.nav[+el.getAttribute('data-nav')][0]; });
+    $$('[data-sk]').forEach(function (el) { el.textContent = t.skills[+el.getAttribute('data-sk')]; });
+    $$('[data-lang]').forEach(function (b) {
+      var on = b.getAttribute('data-lang') === l;
+      b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    $('#heroImg').alt = t.photoAlt + ': ' + t.nameA.replace(/\u00a0/g, ' ') + t.nameB;
+    updateBurgerLabel();
+    renderLists();
+    if (state.modal) renderModal();
+    if (!contactEl.hidden) refreshContactTexts();
+    if (persist) { try { localStorage.setItem('lang', l); } catch (e) {} }
+  }
+
+  // ---- Menu -----------------------------------------------------------------
+  function setMenu(open) {
+    navEl.classList.toggle('open', open);
+    burger.classList.toggle('open', open);
+    updateBurgerLabel();
+  }
+
+  // ---- Overlays -------------------------------------------------------------
+  function lock(on) { document.body.style.overflow = on ? 'hidden' : ''; }
+
+  function openModal(id, opener) {
+    lastFocus = opener || document.activeElement;
+    state.modal = id; state.theme = 'all';
+    modalEl.hidden = false; lock(true);
+    modalEl.scrollTop = 0;
+    renderModal('.close');
+  }
+  function closeModal() {
+    state.modal = null; modalEl.hidden = true; modalEl.innerHTML = '';
+    if (contactEl.hidden) lock(false);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  var sentMode = 'mail';
+  function refreshContactTexts() {
+    if (!$('#sentView').hidden) $('#sentText').textContent = sentMode === 'ok' ? t.sentOk : t.sentMsg;
+    $('#capQ').textContent = cap.a + ' + ' + cap.b + ' = ?';
+  }
+  function newCaptcha() {
+    cap.a = 2 + Math.floor(Math.random() * 8); cap.b = 2 + Math.floor(Math.random() * 8);
+    $('#capQ').textContent = cap.a + ' + ' + cap.b + ' = ?';
+  }
+  function openContact(opener) {
+    lastFocus = opener || document.activeElement;
+    form.reset(); form.hidden = false; $('#sentView').hidden = true;
+    ['#errFields', '#errCap', '#errSend'].forEach(function (s) { $(s).hidden = true; });
+    newCaptcha();
+    contactEl.hidden = false; lock(true);
+    contactEl.scrollTop = 0;
+    $('#f-name').focus();
+  }
+  function closeContact() {
+    contactEl.hidden = true;
+    if (modalEl.hidden) lock(false);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function showSent(mode) {
+    sentMode = mode;
+    form.hidden = true;
+    $('#sentView').hidden = false;
+    $('#sentText').textContent = mode === 'ok' ? t.sentOk : t.sentMsg;
+    $('#mailBtn').hidden = mode === 'ok';
+    $('#mailNote').hidden = mode === 'ok';
+    if (mode === 'mail') {
+      var name = $('#f-name').value.trim(), email = $('#f-email').value.trim(), msg = $('#f-msg').value.trim();
+      $('#mailBtn').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Project inquiry from ' + name) +
+        '&body=' + encodeURIComponent(msg + '\n\n' + name + ' <' + email + '>');
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('#f-name').value.trim(), email = $('#f-email').value.trim(), msg = $('#f-msg').value.trim();
+    ['#errFields', '#errCap', '#errSend'].forEach(function (s) { $(s).hidden = true; });
+    if (!name || !/.+@.+\..+/.test(email) || !msg) { $('#errFields').hidden = false; return; }
+    if (parseInt($('#f-cap').value.trim(), 10) !== cap.a + cap.b) { $('#errCap').hidden = false; newCaptcha(); $('#f-cap').value = ''; return; }
+    if ($('#f-web').value) { closeContact(); return; } // honeypot filled: bot
+    if (!FORM_ENDPOINT) { showSent('mail'); return; }
+    var btn = $('#sendBtn'); btn.disabled = true;
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: msg })
+    }).then(function (r) {
+      btn.disabled = false;
+      if (r.ok) showSent('ok');
+      else throw new Error('bad status');
+    }).catch(function () {
+      btn.disabled = false;
+      var el = $('#errSend');
+      el.textContent = t.sendFail + ' ' + EMAIL;
+      el.hidden = false;
+    });
+  });
+
+  // ---- Events ---------------------------------------------------------------
+  document.addEventListener('click', function (e) {
+    var el = e.target, x;
+    if ((x = el.closest('[data-open-cat]'))) { openModal(x.getAttribute('data-open-cat'), x); return; }
+    if ((x = el.closest('[data-tab]'))) { state.modal = x.getAttribute('data-tab'); state.theme = 'all'; renderModal('[data-tab="' + state.modal + '"]'); return; }
+    if ((x = el.closest('[data-theme]'))) { state.theme = x.getAttribute('data-theme'); renderModal('[data-theme="' + state.theme + '"]'); return; }
+    if (el.closest('[data-close-modal]') || el === modalEl) { closeModal(); return; }
+    if ((x = el.closest('[data-open-contact]'))) { openContact(x); return; }
+    if (el.closest('[data-close-contact]') || el === contactEl) { closeContact(); return; }
+    if ((x = el.closest('[data-lang]'))) { setLang(x.getAttribute('data-lang'), true); return; }
+    if (el.closest('#burger')) { setMenu(!burger.classList.contains('open')); return; }
+    if (el.closest('#site-nav a')) setMenu(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    var layer = !contactEl.hidden ? contactEl : (!modalEl.hidden ? modalEl : null);
+    if (e.key === 'Escape') {
+      if (layer === contactEl) closeContact();
+      else if (layer === modalEl) closeModal();
+      else if (burger.classList.contains('open')) { setMenu(false); burger.focus(); }
+      return;
+    }
+    if (e.key === 'Tab' && layer) { // keep focus inside the open popup
+      var f = $$('a[href], button:not([disabled]), input:not([tabindex="-1"]), textarea', layer).filter(function (n) { return n.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  var hero = $('#hero');
+  hero.addEventListener('mousemove', function (e) {
+    var r = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+    hero.style.setProperty('--my', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+  });
+  hero.addEventListener('mouseleave', function () { hero.style.setProperty('--mx', '0'); hero.style.setProperty('--my', '0'); });
+
+  setLang(lang, false);
+})();
+
+</script>
+</body>
+</html>
